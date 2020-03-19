@@ -1,2 +1,2 @@
 # ProyectoFinalDAW
-Proyecto de final de ciclo de DAW 
+Proyecto final del ciclo de DAW 
