@@ -15,6 +15,7 @@ class AuthController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
+            'rol' => 'usuario',
         ]);
         $token = auth('api')->login($user);
         return $this->respondWithToken($token);

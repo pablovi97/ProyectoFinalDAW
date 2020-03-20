@@ -29,6 +29,11 @@ class PedidoController extends Controller
             $PedidosFiltrados = Pedido::where('fechaPed', 'like', $parametroValue)->get();
             return $PedidosFiltrados;
         }
+        if ($request->input('fechaEntrega') != null) {
+            $parametroValue = $request->input('fechaEntrega');
+            $PedidosFiltrados = Pedido::where('fechaEntrega', 'like', $parametroValue)->get();
+            return $PedidosFiltrados;
+        }
         return PedidoResource::collection(Pedido::all()); 
     }
 
@@ -43,6 +48,7 @@ class PedidoController extends Controller
         $pedido = Pedido::create([
             'fkUsuario' =>  $request->fkUsuario,
             'fechaPed' => $request->fechaPed,
+            'fechaEntrega' => $request->fechaEntrega,
             ]);
             return new PedidoResource($pedido);
     }
@@ -70,6 +76,7 @@ class PedidoController extends Controller
         if ($request->user()->idUsuario == $pedido->fkUsuario) {
             $pedido->fkUsuario = $request->fkUsuario ?? $pedido->fkUsuario;
             $pedido->fechaPed = $request->fechaPed ?? $pedido->fechaPed;
+            $pedido->fechaEntrega = $request->fechaEntrega ?? $pedido->fechaEntrega;
             $pedido->save();
             return new PedidoResource($pedido);
         } else {

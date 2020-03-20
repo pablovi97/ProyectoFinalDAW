@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-03-2020 a las 17:26:03
+-- Tiempo de generación: 20-03-2020 a las 20:10:15
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.3
 
@@ -31,6 +31,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `coche` (
   `idCoche` int(11) NOT NULL,
   `tipoCarroceria` varchar(100) DEFAULT NULL,
+  `marca` varchar(100) DEFAULT NULL,
   `stockModelo` int(11) DEFAULT NULL,
   `km` double DEFAULT NULL,
   `motor` varchar(100) DEFAULT NULL,
@@ -39,6 +40,16 @@ CREATE TABLE `coche` (
   `CV` int(11) DEFAULT NULL,
   `plazas` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `coche`
+--
+
+INSERT INTO `coche` (`idCoche`, `tipoCarroceria`, `marca`, `stockModelo`, `km`, `motor`, `anio`, `precio`, `CV`, `plazas`) VALUES
+(1, 'coupe', 'honda', 500, 200, '1.8 gasolina', 2006, 100, 140, 5),
+(2, 'berlina', 'peugeot', 400, 50, '1.9 diesel', 2015, 30, 100, 5),
+(3, 'coupe', 'Ford Fiesta', 100, 190, '1.2 gasolina', 2015, 50, 80, 5),
+(4, 'cabrio', 'honda s2000', 42, 200, '2.2 gasolina', 1999, 80, 220, 2);
 
 -- --------------------------------------------------------
 
@@ -78,7 +89,8 @@ CREATE TABLE `detallepedido` (
 CREATE TABLE `pedido` (
   `idPedido` int(11) NOT NULL,
   `fkUsuario` int(11) DEFAULT NULL,
-  `fechaPed` date DEFAULT NULL
+  `fechaPed` date DEFAULT NULL,
+  `fechaEntrega` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -105,6 +117,15 @@ CREATE TABLE `usuario` (
   `password` varchar(100) DEFAULT NULL,
   `rol` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`idUsuario`, `name`, `email`, `password`, `rol`) VALUES
+(1, 'pablo', 'pablovieramartin21@gmail.com', '$2y$10$Ju7NceZkmqPtYGVGEtg1xumwwcfvlPcjKN.usb4yibTaD2QpCkZk.', 'admin'),
+(2, 'pepe', 'pepe@gmail.com', '$2y$10$PDiojQ7aaCr2.XIPINX6BuLW8BH6TvtpdnmG4MUk9nlDiRpxVubnW', 'usuario'),
+(3, 'anna', 'anna@gmail.com', '$2y$10$Q0JWenj.qFf6aFGuLnqXieruHyGn.Vhb4bq.DJsdiDjnRbBz9Ii2a', 'usuario');
 
 --
 -- Índices para tablas volcadas
@@ -161,7 +182,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `coche`
 --
 ALTER TABLE `coche`
-  MODIFY `idCoche` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idCoche` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `detallepedido`
@@ -185,7 +206,7 @@ ALTER TABLE `reserva`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas
