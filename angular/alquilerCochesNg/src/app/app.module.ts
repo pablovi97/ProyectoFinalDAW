@@ -6,18 +6,31 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CochesListaComponent } from './components/coches-lista/coches-lista.component';
 import { CochesDetallesComponent } from './components/coches-detalles/coches-detalles.component';
+import { MainNavComponent } from './components/main-nav/main-nav.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     CochesListaComponent,
-    CochesDetallesComponent
+    CochesDetallesComponent,
+    MainNavComponent,
+    LoginComponent,
+    RegisterComponent,
+  
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSidenavModule,
+    MatFormFieldModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

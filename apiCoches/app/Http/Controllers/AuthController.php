@@ -12,10 +12,10 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $user = Usuario::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
-            'rol' => 'usuario',
+            'name' => $request->nom,
+            'email' => $request->em,
+            'password' => bcrypt($request->pass),
+            'rol' =>  $request->rol ?? 'usuario' ,
         ]);
         $token = auth('api')->login($user);
         return $this->respondWithToken($token);
@@ -23,18 +23,18 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $nom = $request->name;
-        $pass = $request->password;
+        $pass = $request->pass;
         $user = Usuario::where('name', '=', $nom)->first();
         if (isset($user) && Hash::check($pass, $user->password)) {
             $token = JWTAuth::fromUser($user);
-            return $this->respondWithToken($token);
+            return $this->respondWithToken($token );
         } else {
 
             return response()->json(['error' => 'Unauthorized', $nom => $pass], 401);
         }
     }
     protected function respondWithToken($token)
-    {
+    {//Meter datos del usuario
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
