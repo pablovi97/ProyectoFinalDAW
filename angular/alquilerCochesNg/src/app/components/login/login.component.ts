@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Auth } from '../../core/auth.service';
 
 
@@ -15,16 +15,30 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
- loginUserPass(user: string, pass: string): void {
- this._authService.login(user ,pass)
- .subscribe(
-   data => {console.log(data);},
-   error =>console.log(error)
-   );
-
- 
-    }
+  loginUserPass(user: string, pass: string): void {
+    this._authService.login(user, pass)
+      .subscribe(
+        data => { console.log(data.user); this.guardarSesion(data.user) },
+        error => console.log(error)
+      );
 
 
+  }
 
+  guardarSesion(user: Usuario) {
+
+    sessionStorage.setItem('usuario', JSON.stringify({
+       'id': user.idUsuario,
+       'name': user.name ,
+       'password':user.password ,
+        'rol': user.rol }));
+  }
+
+}
+interface Usuario {
+  idUsuario: number,
+  name: string,
+  email: string,
+  password: string,
+  rol: string
 }

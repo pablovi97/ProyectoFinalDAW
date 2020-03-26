@@ -11,7 +11,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +30,9 @@ import { RegisterComponent } from './components/register/register.component';
     BrowserAnimationsModule,
     HttpClientModule,
     MatSidenavModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatCheckboxModule,
+    FormsModule
 
   ],
   providers: [],

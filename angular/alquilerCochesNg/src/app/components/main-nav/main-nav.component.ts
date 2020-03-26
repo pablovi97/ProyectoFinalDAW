@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgIf } from '@angular/common';
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,5 +13,8 @@ export class MainNavComponent implements OnInit {
   ngOnInit(){
 
   }
+  events: string[] = [];
+  opened: boolean;
 
+  shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
 }
