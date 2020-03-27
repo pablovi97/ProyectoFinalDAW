@@ -19,7 +19,9 @@ Se pretende crear una web de alquiler de coches en la cual los usuarios puede al
 
 >Luego cogemos el Script alquiler_coches.sql y lo importamos
 ![img](./images/02.png)
+
 >Abirmos el proyecto apiCoche y ejecutamos el siguiente (php artisan serve) comando para arrancar la API 
 ![img](./images/03.png)
+
 >Por ultimo abrimos el proyecto de angular alquilerCochesNg y ejecutamos el siguiente comando (npm start)
 ![img](./images/04.png)
