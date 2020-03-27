@@ -14,11 +14,11 @@ Se pretende crear una web de alquiler de coches en la cual los usuarios puede al
 ## Manual de uso
 
 >Arrancamos los servicios Apache y Mysql en xampp y en Mysql clickamos en 'Admin'
-![](/images/01.jpg "Título alternativo")
+![](/images/01.png "Título alternativo")
 
 >Luego cogemos el Script alquiler_coches.sql y lo importamos
-![](/images/02.jpg "Título alternativo")
+![](/images/02.png "Título alternativo")
 >Abirmos el proyecto apiCoche y ejecutamos el siguiente (php artisan serve) comando para arrancar la API 
-![](/images/03.jpg "Título alternativo")
+![](/images/03.png "Título alternativo")
 >Por ultimo abrimos el proyecto de angular alquilerCochesNg y ejecutamos el siguiente comando (npm start)
-![](/images/04.jpg "Título alternativo")
+![](/images/04.png "Título alternativo")
