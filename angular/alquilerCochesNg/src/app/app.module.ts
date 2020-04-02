@@ -13,6 +13,8 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
+import {MatCardModule} from '@angular/material/card';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +23,7 @@ import { FormsModule } from '@angular/forms';
     MainNavComponent,
     LoginComponent,
     RegisterComponent,
+
   
 
   ],
@@ -32,6 +35,7 @@ import { FormsModule } from '@angular/forms';
     MatSidenavModule,
     MatFormFieldModule,
     MatCheckboxModule,
+    MatCardModule,
     FormsModule
 
   ],

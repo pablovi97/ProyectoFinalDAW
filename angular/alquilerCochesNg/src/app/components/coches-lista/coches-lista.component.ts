@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ApiService } from '../../shared/service/api.service';
 import { Subscription } from 'rxjs';
 import { Coche } from '../../shared/models/coche.model';
+import { LoginComponent } from '../login/login.component';
 @Component({
   selector: 'app-coches-lista',
   templateUrl: './coches-lista.component.html',
@@ -11,7 +12,7 @@ export class CochesListaComponent implements OnInit {
   coches: Coche[];
   subscription: Subscription;
   constructor(private _apiService: ApiService) { }
-
+  logged: string;
   ngOnInit() {
     this.getCoches();
   }
@@ -24,6 +25,15 @@ export class CochesListaComponent implements OnInit {
         next(cochesObserv) { scope.coches = cochesObserv; }
       }
     )
-
+this.getlogeado();
   }
+  getlogeado() {
+    if (sessionStorage.getItem('usuario') != null) {
+      let usuario = sessionStorage.getItem('usuario');
+      console.log(usuario);
+this.logged = usuario;
+    }
+    return null;
+  }
+
 }
