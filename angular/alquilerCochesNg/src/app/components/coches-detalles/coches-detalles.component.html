@@ -1,1 +1,47 @@
-<p>coches-detalles works!</p>
+<ng-container *ngIf="coche != null ; then existe ;else noexiste">
+</ng-container>
+
+
+<ng-template #existe>
+  
+    <mat-card class="card">
+        <div class="container">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title><span class="display-3">{{coche.marca}}</span></mat-card-title>
+  
+          </mat-card-header>
+  
+          <img mat-card-image src="assets/images/{{coche.marca}}.jpg" alt="Photo of {{coche.marca}}" style="width:100%;">
+          <mat-card-content>
+            <p><strong>KM:</strong> {{coche.km}} mil</p>
+            <p> <strong>CV:</strong> {{coche.CV}}</p>
+            <p> <strong>stock:</strong> {{coche.stockModelo}}</p>
+            <p> <strong>motor:</strong> {{coche.motor}}</p>
+            <p> <strong>año:</strong> {{coche.anio}}</p>
+            <p> <strong>plazas:</strong> {{coche.plazas}}</p>
+            <p> <strong>carroceria:</strong> {{coche.tipoCarroceria}}</p>
+
+            <h2>{{coche.precio}}€/dia</h2>
+  
+          </mat-card-content>
+          <p>Desde :
+          <input type="date" value="2020-01-01" min="2005-01-01" max="2030-01-01">
+          hasta:
+          <input type="date" value="2020-01-01" min="2005-01-01" max="2030-01-01">
+          </p> </div>
+  
+        <mat-card-actions style="text-align:center">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button mat-raised-button type="button" class="btn  btn-outline-success">Alquilar</button>
+          </div>
+    
+  
+  
+        </mat-card-actions>
+      </mat-card>
+</ng-template>
+
+<ng-template #noexiste>
+    Por favor, elija un vehiculo de la lista
+</ng-template>

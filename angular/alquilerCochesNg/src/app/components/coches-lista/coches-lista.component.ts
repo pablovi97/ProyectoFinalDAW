@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ApiService } from '../../shared/service/api.service';
 import { Subscription } from 'rxjs';
 import { Coche } from '../../shared/models/coche.model';
-import { LoginComponent } from '../login/login.component';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-coches-lista',
   templateUrl: './coches-lista.component.html',
@@ -11,7 +11,8 @@ import { LoginComponent } from '../login/login.component';
 export class CochesListaComponent implements OnInit {
   coches: Coche[];
   subscription: Subscription;
-  constructor(private _apiService: ApiService) { }
+  selectedCoche: Coche | null = null;
+  constructor(private _apiService: ApiService, private _router: Router) { }
   logged: string;
   ngOnInit() {
     this.getCoches();
@@ -34,6 +35,13 @@ this.getlogeado();
 this.logged = usuario;
     }
     return null;
+  }
+  onSelect(coch: Coche){
+    this.selectedCoche = coch;
+    let cocheJSON = JSON.stringify(coch);
+    localStorage.setItem('coche', cocheJSON);
+    this._router.navigate(['detalles']);
+  
   }
 
 }

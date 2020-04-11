@@ -1,7 +1,7 @@
 
 <div class="row">
   <div class="col col-md-6 col-lg-4 col-xl-3 py-3" *ngFor="let coche of coches">
-    <mat-card class="card">
+    <mat-card class="card" (click)="onSelect(coche)">
       <div class="container">
         <mat-card-header>
           <div mat-card-avatar class="example-header-image"></div>
@@ -13,6 +13,7 @@
         <mat-card-content>
           <p><strong>KM:</strong> {{coche.km}} mil</p>
           <p> <strong>CV:</strong> {{coche.CV}}</p>
+          <h2>{{coche.precio}}€/dia</h2>
 
         </mat-card-content>
       </div>

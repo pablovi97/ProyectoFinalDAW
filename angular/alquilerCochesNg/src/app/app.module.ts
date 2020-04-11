@@ -14,6 +14,7 @@ import { RegisterComponent } from './components/register/register.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import {MatCardModule} from '@angular/material/card';
     MatFormFieldModule,
     MatCheckboxModule,
     MatCardModule,
+    MatDatepickerModule,
     FormsModule
 
   ],
