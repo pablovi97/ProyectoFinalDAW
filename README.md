@@ -24,3 +24,24 @@ Se pretende crear una web de alquiler de coches en la cual los usuarios puede al
 
 >**Por ultimo abrimos el proyecto de angular alquilerCochesNg y ejecutamos el siguiente comando (npm start)**
 ![img](./images/04.PNG)
+
+## Memoria 15/04
+>**Usuarios**
+    * [Admin] = pablo , '1q2w3e4r'
+    * [usuario] = anna , '1q2w3e4r'
+
+* Creamos un proxy para saltarnos el CORS que puede tener nuestra api y que nos puede generar problemas
+    ![img](./images/05.PNG)
+* Introducimos los datos recogidos por la api en una card para mejorar el front:
+    ![img](./images/06.PNG)
+* creamos las rutas en el fichero app-routin.modules.ts   
+    ![img](./images/08.PNG)
+* Cambiamos el estilo del navbar y le introducimos tres links (login ,sign in , about us):
+    ![img](./images/07.PNG)
+* El login funciona correctamente , cuando los logeamos recibimos el objeto del usuario en el que hemos entrado  que se guardará en sesion  , y nos reedirigirá al home:
+    ![img](./images/09.PNG)
+* si el usuario es 'Admin' le saldrán dos botones uno para editar y otro para eliminar (Por ahora funciona el eliminar):   
+    ![img](./images/10.PNG)   
+* Cuando clicamos en un vehiculo nos saldra los detalles de este:
+    ![img](./images/11.PNG)   
+    ![img](./images/12.PNG)   
