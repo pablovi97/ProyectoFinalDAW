@@ -14,13 +14,13 @@
   
           <img mat-card-image src="assets/images/{{coche.marca}}.jpg" alt="Photo of {{coche.marca}}" style="width:100%;">
           <mat-card-content>
-            <p><strong>KM:</strong> {{coche.km}} mil</p>
-            <p> <strong>CV:</strong> {{coche.CV}}</p>
-            <p> <strong>stock:</strong> {{coche.stockModelo}}</p>
-            <p> <strong>motor:</strong> {{coche.motor}}</p>
-            <p> <strong>año:</strong> {{coche.anio}}</p>
-            <p> <strong>plazas:</strong> {{coche.plazas}}</p>
-            <p> <strong>carroceria:</strong> {{coche.tipoCarroceria}}</p>
+            <strong>KM:</strong> <span class="badge badge-secondary">{{coche.km}} mil</span><br>
+            <strong>CV:</strong> <span class="badge badge-secondary"> {{coche.CV}}</span><br>
+            <strong>stock:</strong> <span class="badge badge-secondary">{{coche.stockModelo}}</span><br>
+            <strong>motor:</strong> <span class="badge badge-secondary">{{coche.motor}}</span><br>
+            <strong>año:</strong> <span class="badge badge-secondary">{{coche.anio}}</span><br>
+            <strong>plazas:</strong> <span class="badge badge-secondary">{{coche.plazas}}</span><br>
+            <strong>carroceria:</strong> <span class="badge badge-secondary">{{coche.tipoCarroceria}}</span><br>
 
             <h2>{{coche.precio}}€/dia</h2>
   

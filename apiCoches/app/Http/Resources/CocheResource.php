@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class CocheResource extends JsonResource
@@ -12,7 +13,7 @@ class CocheResource extends JsonResource
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function toArray($request)
+    public function toArray( $request)
     {
         return [
             'idCoche' => $this->idCoche,

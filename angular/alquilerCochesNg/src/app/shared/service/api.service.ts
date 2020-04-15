@@ -18,7 +18,7 @@ export class ApiService {
 
 
   getCochesObserv(): Observable<Coche[]> {
-   // console.log('ENTRA!');
+    // console.log('ENTRA!');
     const CAR: Coche[] = [];
     const scope = this;
     const getUrl = this._cocheApiUrl + `coches`;
@@ -27,7 +27,7 @@ export class ApiService {
     scope._http.get(getUrl).subscribe((result: any) => {
       // console.log(result);
       result['data'].forEach((element: any) => {
-       
+
         CAR.push(new Coche(
           element.idCoche,
           element.tipoCarroceria,
@@ -41,8 +41,15 @@ export class ApiService {
       });
     });
 
-console.log( CAR);
+    console.log(CAR);
 
     return of(CAR);
+  }
+
+
+  deleteCoche(id: number): Observable<any> {
+    console.log("entra en el delete")
+    const scope = this;
+    return scope._http.delete(this._cocheApiUrl + 'coches/' + id);
   }
 }

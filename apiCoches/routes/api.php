@@ -25,3 +25,4 @@ Route::apiResource('pedidos', 'PedidoController');
 Route::apiResource('reservas', 'ReservaController');
 Route::post('register', 'AuthController@register');
 Route::post('login', 'AuthController@login');
+

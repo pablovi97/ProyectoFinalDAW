@@ -10,7 +10,7 @@ class CocheController extends Controller
 {
     public function __construct()
     {
-    $this->middleware('auth:api')->except(['index','show']);
+   //$this->middleware('auth:api')->except(['index','show']);
     }
     /**
      * Display a listing of the resource.
@@ -77,6 +77,11 @@ class CocheController extends Controller
             'tipoCarroceria' => $request->tipoCarroceria,
             'km' => $request->km,
             'motor' => $request->motor,
+            'stockModelo' => $request->stockModelo,
+            'anio' => $request->anio,
+            'CV' => $request->CV,
+            'plazas' => $request->plazas,
+            'precio' => $request->precio
             ]);
 
 
@@ -89,9 +94,18 @@ class CocheController extends Controller
      * @param  \App\Coche  $coche
      * @return \Illuminate\Http\Response
      */
-    public function show(Coche $coche)
+    public function show($id)
     {
-        return new CocheResource($coche);
+        $coche=Coche::find($id);
+        //return new CocheResource($coche);
+
+        if (!$coche)
+		{
+			// Se devuelve un array errors con los errores encontrados y cabecera HTTP 404.
+			// En code podríamos indicar un código de error personalizado de nuestra aplicación si lo deseamos.
+			return response()->json(['errors'=>array(['code'=>404,'message'=>'No se encuentra un coche con ese código.'])],404);
+		}
+        return response()->json(['status'=>'ok','data'=>$coche],200);
     }
 
     /**
@@ -117,11 +131,9 @@ class CocheController extends Controller
      * @param  \App\Coche  $coche
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Coche $coche)
-    {
+    public function destroy($id)
+    {  $coche=Coche::find($id);
         $coche->delete();
-
-
         return response()->json(null, 204);
     }
 }

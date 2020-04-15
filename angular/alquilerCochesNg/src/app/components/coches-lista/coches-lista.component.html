@@ -1,8 +1,109 @@
 
 <div class="row">
+ <!-- <ng-container *ngIf="usuario.rol == 'admin' ; then existe">
+  </ng-container>
+  <ng-template #existe>
+    <div class="col-12">
+
+<h2>Introduciendo un nuevo vehivulo</h2>
+
+<form [formGroup]="newCocheForm" (ngSubmit)="onSubmit()">
+  <mat-horizontal-stepper linear>
+     
+          <mat-step [stepControl]="newFormGroup">
+  
+                  <ng-template matStepLabel>ID</ng-template>
+                  <label>ID:
+                      <input type="number" formControlName="id">
+                  </label>
+             
+          </mat-step>
+          <mat-step [stepControl]="newFormGroup">
+  
+                  <ng-template matStepLabel> title</ng-template>
+                  <label>title:
+                      <input type="text" formControlName="title"
+                          [style.backgroundColor]="newCocheForm.controls['title'].invalid ? 'lightcoral' : 'lightgreen'"
+                          [class.error]="newCocheForm.controls['title'].invalid && (newCocheForm.controls['title'].dirty || newCocheForm.controls['title'].touched)"
+                          [class.ok]="newCocheForm.controls['title'].valid">
+                  </label>
+        
+          </mat-step>
+          <mat-step [stepControl]="newFormGroup">
+             
+                  <ng-template matStepLabel> description</ng-template>
+                  <label>description:
+                   
+                      <textarea name="" id="" cols="30" rows="10" formControlName="description"
+                      [style.backgroundColor]="newCocheForm.controls['description'].invalid ? 'lightcoral' : 'lightgreen'"
+                      [class.error]="newCocheForm.controls['description'].invalid && (newCocheForm.controls['description'].dirty || newCocheForm.controls['description'].touched)"
+                      [class.ok]="newCocheForm.controls['description'].valid">
+  
+                      </textarea>
+              </label>
+        
+          </mat-step>
+          <mat-step [stepControl]="newFormGroup">
+             
+              <ng-template matStepLabel>director</ng-template>
+              <label>director:
+                  <input type="text" formControlName="director"
+                  [style.backgroundColor]="newCocheForm.controls['director'].invalid ? 'lightcoral' : 'lightgreen'"
+                  [class.error]="newCocheForm.controls['director'].invalid && (newCocheForm.controls['director'].dirty || newCocheForm.controls['director'].touched)"
+                  [class.ok]="newCocheForm.controls['director'].valid">
+          </label>
+    
+      </mat-step>
+      <mat-step [stepControl]="newFormGroup">
+             
+          <ng-template matStepLabel> producer</ng-template>
+          <label>producer:
+          
+                  <input type="text" formControlName="producer"
+                  [style.backgroundColor]="newCocheForm.controls['producer'].invalid ? 'lightcoral' : 'lightgreen'"
+                  [class.error]="newCocheForm.controls['producer'].invalid && (newCocheForm.controls['producer'].dirty || newCocheForm.controls['producer'].touched)"
+                  [class.ok]="newCocheForm.controls['producer'].valid">
+          </label>
+  
+  </mat-step>
+          <mat-step [stepControl]="newFormGroup">
+  
+              <ng-template matStepLabel> release_date</ng-template>
+              <label>release_date:
+                  <input type="number" formControlName="release_date">
+              </label>
+  
+          </mat-step>
+          <mat-step [stepControl]="newFormGroup">
+  
+              <ng-template matStepLabel>score</ng-template>
+              <label>rt_score:
+                  <input type="range" min="1" max="100" value="50"  class="slider" id="myRange" formControlName="rt_score"
+                  onchange="document.getElementById('sli').value = this.value">
+                  <input type="text" id="sli" size="5">
+              </label>
+  
+          </mat-step>
+          <mat-step [stepControl]="newFormGroup">
+  
+              <ng-template matStepLabel>DONE</ng-template>
+              <label>
+                  <button type="submit" [disabled]="newCocheForm.invalid">Guardar</button>
+              </label>
+  
+          </mat-step>
+  
+  </mat-horizontal-stepper>   
+   </form>
+
+
+
+    </div>
+    </ng-template>-->
   <div class="col col-md-6 col-lg-4 col-xl-3 py-3" *ngFor="let coche of coches">
-    <mat-card class="card" (click)="onSelect(coche)">
-      <div class="container">
+    <!-- (click)="onSelect(coche)"-->
+    <mat-card class="card"  [class.select]="coche == selectedCoche">
+      <div class="container" (click)="onSelect(coche)">
         <mat-card-header>
           <div mat-card-avatar class="example-header-image"></div>
           <mat-card-title><span class="lista">{{coche.marca}}</span></mat-card-title>
@@ -11,21 +112,23 @@
 
         <img mat-card-image src="assets/images/{{coche.marca}}.jpg" alt="Photo of {{coche.marca}}" style="width:100%;">
         <mat-card-content>
-          <p><strong>KM:</strong> {{coche.km}} mil</p>
-          <p> <strong>CV:</strong> {{coche.CV}}</p>
+        <strong>KM:</strong> <span class="badge badge-secondary">{{coche.km}} mil</span><br>
+        <strong>CV:</strong> <span class="badge badge-secondary"> {{coche.CV}}</span>
           <h2>{{coche.precio}}€/dia</h2>
 
         </mat-card-content>
       </div>
+    <ng-container *ngIf ="rol == 'admin' ; then existe">
+      </ng-container>
+      <ng-template #existe>
       <mat-card-actions style="text-align:center">
         <div class="btn-group" role="group" aria-label="Basic example">
           <button mat-raised-button type="button" class="btn btn-sm btn-outline-warning">Editar</button>
-          <button mat-stroked-button type="button" class="btn btn-sm btn-outline-danger">Eliminar</button>
+          <button mat-stroked-button type="button" class="btn btn-sm btn-outline-danger" (click)="onDelete(coche)">Eliminar</button>
         </div>
-  
-
-
       </mat-card-actions>
+    </ng-template>
     </mat-card>
   </div>
+
 </div>

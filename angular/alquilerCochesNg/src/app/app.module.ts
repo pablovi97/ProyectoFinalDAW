@@ -15,7 +15,12 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-
+import {MatTreeModule} from '@angular/material/tree';
+import {MatSelectModule} from '@angular/material/select';
+import {MatListModule} from '@angular/material/list';
+import {MatSliderModule} from '@angular/material/slider';
+import {MatStepperModule} from '@angular/material/stepper';
+import { LogoutComponent } from './components/logout/logout.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +29,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     MainNavComponent,
     LoginComponent,
     RegisterComponent,
+    LogoutComponent,
 
   
 
@@ -38,7 +44,12 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     MatCheckboxModule,
     MatCardModule,
     MatDatepickerModule,
-    FormsModule
+    FormsModule,
+    MatStepperModule,
+    MatSliderModule,
+    MatListModule,
+    MatSelectModule,
+    MatTreeModule
 
   ],
   providers: [],
