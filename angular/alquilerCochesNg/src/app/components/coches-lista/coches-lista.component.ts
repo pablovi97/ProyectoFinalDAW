@@ -52,7 +52,7 @@ export class CochesListaComponent implements OnInit {
     }
   */
 
-  onDelete(coche : Coche) {
+  onDelete(coche: Coche) {
     const scope = this;
     scope._apiService.deleteCoche(coche.idCoche).subscribe();
   }
@@ -78,9 +78,10 @@ export class CochesListaComponent implements OnInit {
    }
   */
   getlogeado() {
-
-    this.usuario = JSON.parse(sessionStorage.getItem('usuario'));
-    this.rol = this.usuario.rol;
+    if (sessionStorage.getItem('usuario')) {
+      this.usuario = JSON.parse(sessionStorage.getItem('usuario'));
+      this.rol = this.usuario.rol;
+    }
 
   }
   onSelect(coch: Coche) {

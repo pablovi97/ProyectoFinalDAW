@@ -12,7 +12,6 @@ const routes: Routes = [
   { path: 'logout', component: LogoutComponent },
   { path: 'lista', component: CochesListaComponent },
   {path: 'detalles' , component:CochesDetallesComponent},
-  // Por defecto lo mandamos a pokemons
   { path: '', redirectTo: '/lista', pathMatch: 'full' },
  
 ];

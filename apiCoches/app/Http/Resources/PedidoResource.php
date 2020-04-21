@@ -18,7 +18,6 @@ class PedidoResource extends JsonResource
             'idPedido' => $this->idPedido,
             'fkUsuario' => $this->fkUsuario,
             'fechaPed' => $this->fechaPed,
-            'fechaEntrega' => $this->fechaEntrega,
             
             ];
     }

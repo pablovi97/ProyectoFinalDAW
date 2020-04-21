@@ -21,6 +21,8 @@ class DetallepedResource extends JsonResource
             'fkReserva' => $this->fkReserva,
             'cantidad' => $this->cantidad,
             'precioTotal' => $this->precioTotal,
+            'fechaIniRent' => $this->fechaIniRent,
+            'fechaFinRent' => $this->fechaFinRent
             ];
     }
 }

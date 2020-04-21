@@ -41,7 +41,7 @@ export class ApiService {
       });
     });
 
-    console.log(CAR);
+    //console.log(CAR);
 
     return of(CAR);
   }

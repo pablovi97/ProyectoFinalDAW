@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $idPedido
  * @property int $fkUsuario
  * @property string $fechaPed
- * @property string $fechaEntrega
  * @property Usuario $usuario
  * @property Detallepedido[] $detallepedidos
  */
@@ -31,7 +30,7 @@ class Pedido extends Model
     /**
      * @var array
      */
-    protected $fillable = ['fkUsuario', 'fechaPed', 'fechaEntrega'];
+    protected $fillable = ['fkUsuario', 'fechaPed'];
 
     /**
      * Indicates if the model should be timestamped.

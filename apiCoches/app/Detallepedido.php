@@ -11,6 +11,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $fkReserva
  * @property int $cantidad
  * @property int $precioTotal
+ * @property string $fechaIniRent
+ * @property string $fechaFinRent
  * @property Pedido $pedido
  * @property Coche $coche
  * @property Reserva $reserva
@@ -34,7 +36,7 @@ class Detallepedido extends Model
     /**
      * @var array
      */
-    protected $fillable = ['fkPedido', 'fkCoche', 'fkReserva', 'cantidad', 'precioTotal'];
+    protected $fillable = ['fkPedido', 'fkCoche', 'fkReserva', 'cantidad', 'precioTotal', 'fechaIniRent', 'fechaFinRent'];
 
     /**
      * Indicates if the model should be timestamped.

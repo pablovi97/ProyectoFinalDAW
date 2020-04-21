@@ -10,7 +10,7 @@ class DetalleController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api')->except(['index', 'show']);
+        //$this->middleware('auth:api')->except(['index', 'show']);
     }
     /**
      * Display a listing of the resource.
@@ -39,6 +39,16 @@ class DetalleController extends Controller
             $detallepedidosFiltrados = detallepedido::where('cantidad', 'like', $parametroValue)->get();
             return $detallepedidosFiltrados;
         }
+        if ($request->input('fechaIniRent') != null) {
+            $parametroValue = $request->input('fechaIniRent');
+            $detallepedidosFiltrados = detallepedido::where('fechaIniRent', 'like', $parametroValue)->get();
+            return $detallepedidosFiltrados;
+        }
+        if ($request->input('fechaFinRent') != null) {
+            $parametroValue = $request->input('fechaFinRent');
+            $detallepedidosFiltrados = detallepedido::where('fechaFinRent', 'like', $parametroValue)->get();
+            return $detallepedidosFiltrados;
+        }
         if ($request->input('precioTotal') != null) {
             $parametroValue = $request->input('precioTotal');
             $detallepedidosFiltrados = detallepedido::where('precioTotal', 'like', $parametroValue)->get();
@@ -63,6 +73,8 @@ class DetalleController extends Controller
             'fkReserva' => $request->fkReserva,
             'cantidad' => $request->cantidad,
             'precioTotal' => $request->precioTotal,
+            'fechaIniRent' => $request->fechaIniRent,
+            'fechaFinRent' => $request->fechaFinRent,
         ]);
 
 
@@ -93,6 +105,8 @@ class DetalleController extends Controller
         $detallepedido->id_producto = $request->id_producto ?? $detallepedido->id_producto;
         $detallepedido->cantidad = $request->cantidad ?? $detallepedido->cantidad;
         $detallepedido->precioProducto = $request->precioProducto ?? $detallepedido->precioProducto;
+        $detallepedido->fechaIniRent = $request->fechaIniRent ?? $detallepedido->fechaIniRent;
+        $detallepedido->fechaFinRent = $request->fechaFinRent ?? $detallepedido->fechaFinRent; 
         $detallepedido->save();
         return new DetallepedResource($detallepedido);
     }

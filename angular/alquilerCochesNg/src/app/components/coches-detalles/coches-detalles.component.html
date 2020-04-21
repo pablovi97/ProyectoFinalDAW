@@ -3,45 +3,66 @@
 
 
 <ng-template #existe>
-  
-    <mat-card class="card">
-        <div class="container">
-          <mat-card-header>
-            <div mat-card-avatar class="example-header-image"></div>
-            <mat-card-title><span class="display-3">{{coche.marca}}</span></mat-card-title>
-  
-          </mat-card-header>
-  
-          <img mat-card-image src="assets/images/{{coche.marca}}.jpg" alt="Photo of {{coche.marca}}" style="width:100%;">
-          <mat-card-content>
-            <strong>KM:</strong> <span class="badge badge-secondary">{{coche.km}} mil</span><br>
-            <strong>CV:</strong> <span class="badge badge-secondary"> {{coche.CV}}</span><br>
-            <strong>stock:</strong> <span class="badge badge-secondary">{{coche.stockModelo}}</span><br>
-            <strong>motor:</strong> <span class="badge badge-secondary">{{coche.motor}}</span><br>
-            <strong>año:</strong> <span class="badge badge-secondary">{{coche.anio}}</span><br>
-            <strong>plazas:</strong> <span class="badge badge-secondary">{{coche.plazas}}</span><br>
-            <strong>carroceria:</strong> <span class="badge badge-secondary">{{coche.tipoCarroceria}}</span><br>
 
-            <h2>{{coche.precio}}€/dia</h2>
-  
-          </mat-card-content>
-          <p>Desde :
-          <input type="date" value="2020-01-01" min="2005-01-01" max="2030-01-01">
-          hasta:
-          <input type="date" value="2020-01-01" min="2005-01-01" max="2030-01-01">
-          </p> </div>
-  
-        <mat-card-actions style="text-align:center">
-          <div class="btn-group" role="group" aria-label="Basic example">
-            <button mat-raised-button type="button" class="btn  btn-outline-success">Alquilar</button>
-          </div>
-    
-  
-  
-        </mat-card-actions>
-      </mat-card>
+  <mat-card class="card">
+    <div class="container">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title><span class="display-3">{{coche.marca}}</span></mat-card-title>
+
+      </mat-card-header>
+
+      <img mat-card-image src="assets/images/{{coche.marca}}.jpg" alt="Photo of {{coche.marca}}" style="width:100%;">
+      <mat-card-content>
+        <strong>KM:</strong> <span class="badge badge-secondary">{{coche.km}} mil</span><br>
+        <strong>CV:</strong> <span class="badge badge-secondary"> {{coche.CV}}</span><br>
+        <strong>stock:</strong> <span class="badge badge-secondary">{{coche.stockModelo}}</span><br>
+        <strong>motor:</strong> <span class="badge badge-secondary">{{coche.motor}}</span><br>
+        <strong>año:</strong> <span class="badge badge-secondary">{{coche.anio}}</span><br>
+        <strong>plazas:</strong> <span class="badge badge-secondary">{{coche.plazas}}</span><br>
+        <strong>carroceria:</strong> <span class="badge badge-secondary">{{coche.tipoCarroceria}}</span><br>
+
+        <h2>{{coche.precio}}€/dia</h2>
+      
+        <label for="tentacles">Seleccione la cantidad :</label>
+
+        <input type="number" id="cantidad" value="1" min="1" max="100">
+
+      </mat-card-content>
+      <!--<p>Desde :
+        <input type="date" value="2020-01-01" min="2005-01-01" max="2030-01-01" id="fechaMin">
+        hasta:
+        <input type="date" value="2020-01-01" min="2005-01-01" max="2030-01-01" id="fechaMax">
+      </p>-->
+
+      <form>
+        <div>
+          <label for="party">Elija las fechas:</label><br>
+          Desde:
+          <input type="date" id="fechaMin" name="party"value="2020-01-01" min="2005-01-01" max="2030-01-01"  required>
+          Hasta:
+          <input type="date" id="fechaMax" name="party" value="2020-01-01" min="2005-01-01" max="2030-01-01" required>
+          <span class="validity"></span>
+        </div>
+        <div>
+     
+        </div>
+      </form>
+    </div>
+    <mat-card-actions style="text-align:center">
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button mat-raised-button type="button" class="btn  btn-outline-success"
+          (click)="alquilar(coche)">Alquilar</button>
+        <button mat-raised-button type="button" class="btn  btn-outline-warning"
+          (click)="reservar(coche)">Reservar</button>
+      </div>
+
+
+
+    </mat-card-actions>
+  </mat-card>
 </ng-template>
 
 <ng-template #noexiste>
-    Por favor, elija un vehiculo de la lista
+  Por favor, elija un vehiculo de la lista
 </ng-template>
