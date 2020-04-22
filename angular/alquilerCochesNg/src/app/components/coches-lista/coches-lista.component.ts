@@ -92,6 +92,21 @@ export class CochesListaComponent implements OnInit {
 
   }
 
+  onCreate() {
+    var tipoCarroceria = (<HTMLInputElement>document.getElementById('carroceria')).value
+    var marca = (<HTMLInputElement>document.getElementById('marca')).value
+    var stockModelo = +(<HTMLInputElement>document.getElementById('stock')).value
+    var km = +(<HTMLInputElement>document.getElementById('km')).value
+    var motor = (<HTMLInputElement>document.getElementById('motor')).value
+    var anio = +(<HTMLInputElement>document.getElementById('anio')).value
+    var precio = +(<HTMLInputElement>document.getElementById('precio')).value
+    var cv = +(<HTMLInputElement>document.getElementById('CV')).value
+    var plazas = +(<HTMLInputElement>document.getElementById('plazas')).value
+   
+      this._apiService.introducirCoche( tipoCarroceria, marca, stockModelo, km, motor, anio
+        , precio, cv, plazas).subscribe();
+  }
+
 }
 interface Usuario {
   idUsuario: number,

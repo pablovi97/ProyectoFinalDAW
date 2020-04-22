@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Coche } from '../models/coche.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
@@ -51,5 +51,18 @@ export class ApiService {
     console.log("entra en el delete")
     const scope = this;
     return scope._http.delete(this._cocheApiUrl + 'coches/' + id);
+  }
+
+  introducirCoche( tipoCarroceria: string, marca: string, stockModelo: number
+    , km: number, motor: string, anio: number
+    , precio: number, CV: number, plazas: number): Observable<any>{
+    console.log("entra")
+    const url_api = this._cocheApiUrl+"coches/";
+    return this._http
+      .post(
+        url_api,
+        {  marca ,tipoCarroceria  , km ,motor , stockModelo, anio ,CV, plazas ,precio },
+        { headers: this.httpOptions.headers}
+      ).pipe(map(data => data));
   }
 }
