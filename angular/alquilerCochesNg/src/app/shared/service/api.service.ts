@@ -18,16 +18,11 @@ export class ApiService {
 
 
   getCochesObserv(): Observable<Coche[]> {
-    // console.log('ENTRA!');
     const CAR: Coche[] = [];
     const scope = this;
     const getUrl = this._cocheApiUrl + `coches`;
-
-
-    scope._http.get(getUrl).subscribe((result: any) => {
-      // console.log(result);
+    scope._http.get(getUrl).subscribe((result: any) => { 
       result['data'].forEach((element: any) => {
-
         CAR.push(new Coche(
           element.idCoche,
           element.tipoCarroceria,
@@ -40,14 +35,13 @@ export class ApiService {
           element.plazas));
       });
     });
-
-    //console.log(CAR);
-
+//Devolvemos todos los coches de la base de datos
     return of(CAR);
   }
 
 
   deleteCoche(id: number): Observable<any> {
+    //Borramos el coche con su id
     console.log("entra en el delete")
     const scope = this;
     return scope._http.delete(this._cocheApiUrl + 'coches/' + id);
@@ -56,7 +50,6 @@ export class ApiService {
   introducirCoche( tipoCarroceria: string, marca: string, stockModelo: number
     , km: number, motor: string, anio: number
     , precio: number, CV: number, plazas: number): Observable<any>{
-    console.log("entra")
     const url_api = this._cocheApiUrl+"coches/";
     return this._http
       .post(
@@ -64,5 +57,26 @@ export class ApiService {
         {  marca ,tipoCarroceria  , km ,motor , stockModelo, anio ,CV, plazas ,precio },
         { headers: this.httpOptions.headers}
       ).pipe(map(data => data));
+  }
+
+  subirPedido(fkUsuario :number): Observable<any>{
+    var fechaPed = new Date().toLocaleDateString('es-ES');
+    const url_api = this._cocheApiUrl+"pedidos/";
+    return this._http.post(
+       url_api ,
+       {fkUsuario , fechaPed } ,
+       {headers: this.httpOptions.headers}
+       ).pipe(map(data=>data));
+
+  }
+
+  subirDetalle(fkPedido:number ,fkCoche:number ,cantidad:number ,precioTotal:number 
+    ,fechaIniRent:string ,fechaFinRent:string): Observable<any>{
+    const url_api = this._cocheApiUrl+"detallepedidos/";
+    return this._http.post(
+      url_api ,
+      { fkPedido,fkCoche,cantidad,precioTotal ,fechaIniRent,fechaFinRent } ,
+      {headers: this.httpOptions.headers}
+      ).pipe(map(data=>data));
   }
 }

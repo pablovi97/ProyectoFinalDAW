@@ -20,37 +20,10 @@ export class CochesListaComponent implements OnInit {
   usuario: Usuario | null;
   rol: string | null;
 
-  // @Output() newCoche = new EventEmitter();
-  //newCocheForm: FormGroup = this.newFormGroup();
-
   ngOnInit() {
     this.getCoches();
   }
 
-  /*
-  INTRODUCIMOS UN NUEVO VEHICULO
-  */
-  /*
-  
-    newFormGroup(): FormGroup {
-      return new FormGroup({
-        tipoCarroceria: new FormControl('', Validators.required),
-        marca: new FormControl('', Validators.required),
-        stockModelo: new FormControl('', Validators.required),
-        km: new FormControl('', Validators.required),
-        motor: new FormControl('', Validators.required),
-        anio: new FormControl('', Validators.required),
-        precio: new FormControl('', Validators.required),
-        CV: new FormControl('', Validators.required),
-        plazas: new FormControl('', Validators.required),
-      });
-    }
-    onSubmit(): void {
-      // Aquí puedo comprobar que todo es correcto
-      this.newCoche.emit(this.newCocheForm.value);
-      this.newCocheForm = this.newFormGroup();
-    }
-  */
 
   onDelete(coche: Coche) {
     const scope = this;
@@ -68,15 +41,7 @@ export class CochesListaComponent implements OnInit {
     )
     this.getlogeado();
   }
-  /* getlogeado() {
-     if (sessionStorage.getItem('usuario') != null) {
-       let usuario = sessionStorage.getItem('usuario');
-       console.log(usuario);
- this.logged = usuario;
-     }
-     return null;
-   }
-  */
+
   getlogeado() {
     if (sessionStorage.getItem('usuario')) {
       this.usuario = JSON.parse(sessionStorage.getItem('usuario'));

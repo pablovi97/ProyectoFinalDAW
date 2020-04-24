@@ -1,0 +1,18 @@
+<ng-container *ngIf="pedido != null ; then existe ;else noexiste">
+</ng-container>
+<ng-template #existe>
+
+<li *ngFor="let det of pedido.detallesPedidos;">
+
+    <p>{{det.fkCoche}}</p>
+    <p>{{det.fkPedido}}</p>
+    <p>{{det.cantidad}}</p>
+    <p>{{det.precioTotal}}</p>
+</li>
+
+<button class="btn btn-warning" (click)="subirPedido()">Pagar <i class="fas fa-credit-card"> </i></button>
+</ng-template>
+
+<ng-template #noexiste>
+<p>Carrito Vacio!</p>
+</ng-template>

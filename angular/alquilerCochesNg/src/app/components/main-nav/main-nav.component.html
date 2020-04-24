@@ -16,7 +16,6 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
-          
         </a>
  
      
@@ -53,14 +52,21 @@
 
       </ng-template>
     </ul>
+    
+
     <form class="form-inline my-2 my-lg-0">
+
+    
+
       <input class="form-control mr-sm-2 bg-dark border border-top-0 border-left-0 border-white rounded" type="text"
         placeholder="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+      <button type="button" class="btn btn-outline-warning" (click)=verCarrito()><i class="fas fa-shopping-cart"></i>
+      </button>
+     
     </form>
+    
 
-  
 
   </div>
 

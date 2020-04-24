@@ -34,6 +34,7 @@ export class CochesDetallesComponent implements OnInit {
     var pedido = JSON.parse(sessionStorage.getItem('pedido'));
     var bool: boolean = false;
     if (sessionStorage.getItem('pedido') != null) {  
+    
       var detalle = pedido.detallesPedidos;
       for (let obj of detalle) {
         if (obj.fkCoche == coche.idCoche) {

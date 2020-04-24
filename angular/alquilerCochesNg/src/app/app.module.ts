@@ -21,6 +21,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatStepperModule} from '@angular/material/stepper';
 import { LogoutComponent } from './components/logout/logout.component';
+import { CarritoComponent } from './components/carrito/carrito.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +31,7 @@ import { LogoutComponent } from './components/logout/logout.component';
     LoginComponent,
     RegisterComponent,
     LogoutComponent,
+    CarritoComponent,
 
   
 

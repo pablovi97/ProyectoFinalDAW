@@ -22,6 +22,11 @@ this.logeado();
   opened: boolean;
 
   shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
+
+
+  verCarrito(){
+    this.router.navigate(['carrito']);
+  }
 }
 interface Usuario {
   idUsuario: number,
