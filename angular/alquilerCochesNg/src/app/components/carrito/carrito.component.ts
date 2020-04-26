@@ -29,9 +29,10 @@ export class CarritoComponent implements OnInit {
 
       this.usuario = JSON.parse(sessionStorage.getItem('usuario'));
       this._apiService.subirPedido(this.usuario.id).subscribe(data => {
-        this.pedido = data;
-        console.log(data);
+        this.pedido = data.data;
         this.subirDetallesPedido();
+        //Cuando ya hayamos subido nuestro pedido borramos el pedido de la sesión
+        sessionStorage.removeItem('pedido')
         this._router.navigate(['lista']);
       },
         error => console.log(error));
@@ -46,8 +47,6 @@ export class CarritoComponent implements OnInit {
     console.log(this.pedido);
     var ped = JSON.parse(sessionStorage.getItem('pedido'));
     var detalles = ped.detallesPedidos;
-
-    console.log(detalles);
     for (let det of detalles) {
       //El pedido que usamos tiene un id porque es el resultado de subirlo a la base de datos
       this._apiService.subirDetalle(this.pedido.idPedido,

@@ -3,7 +3,7 @@
   </ng-container>
   <ng-template #exist>
     <div class="col-12">
-
+      <!--
       <h2>Introduce un nuevo vehiculo</h2>
       <form action="" method="POST">
         <label for="carroceria">Tipo de carroceria</label>
@@ -34,8 +34,111 @@
         <input type="text" name="" id="plazas"> <br>
         <button type="button" class="btn btn-outline-success"  (click)="onCreate()">Introducir </button>
       </form>
+    -->
+      <form [formGroup]="newForm">
+        <mat-horizontal-stepper linear>
+          <mat-step [stepControl]="newFormGroup">
+
+            <ng-template matStepLabel aria-label="tipo de carroceria">Carroceria</ng-template>
+
+            <!-- <input type="text" name="" >-->
+            <mat-form-field>
+              <mat-label>Selecciona el tipo de carroceria</mat-label>
+              <mat-select formControlName="carroceria" required>
+                <mat-option *ngFor="let carr of carroceria" [value]="carr.value">
+                  {{carr.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+          </mat-step>
+          <mat-step [stepControl]="newFormGroup">
+
+            <ng-template matStepLabel aria-label="marca del vehiculo">Marca</ng-template>
+            <div class="form-group">
+
+              <input type="text" formControlName="marca" id="marca" class="form-control" required>
+              <label for="marca">Marca del vehiculo</label>
+            </div>
+
+          </mat-step>
+          <mat-step [stepControl]="newFormGroup">
+
+            <ng-template matStepLabel aria-label="stock del vehiculo">Stock</ng-template>
+            <div class="form-group">
+              <input type="text" name="" formControlName="stock" class="form-control" required>
+              <label for="stock">Stock del vehiculo</label>
+            </div>
+
+          </mat-step>
+          <mat-step [stepControl]="newFormGroup">
+
+            <ng-template matStepLabel aria-label="tipo de motor"> Motor</ng-template>
+            <div class="form-group">
+              <input type="text" name="" formControlName="motor" class="form-control" required>
+              <label for="motor">Motor del vehiculo</label>
+            </div>
+
+          </mat-step>
+          <mat-step [stepControl]="newFormGroup">
+
+            <ng-template matStepLabel aria-label="año del vehiculo">Año</ng-template>
+            <div class="form-group">
+              <input type="text" name="" formControlName="anio" class="form-control" required>
+              <label for="motor">Año del vehiculo</label>
+            </div>
+
+          </mat-step>
+          <mat-step [stepControl]="newFormGroup">
+
+            <ng-template matStepLabel aria-label="caballaje">CV</ng-template>
+            <div class="form-group">
+              <input type="text" name="" formControlName="CV" class="form-control" required>
+              <label for="motor">CV del vehiculo</label>
+            </div>
+
+          </mat-step>
+          <mat-step [stepControl]="newFormGroup">
+
+            <ng-template matStepLabel>KM</ng-template>
+            <div class="form-group">
+              <input type="text" name="" formControlName="km" class="form-control" required>
+              <label for="km">KMs del vehiculo</label>
+            </div>
+
+          </mat-step>
+          <mat-step [stepControl]="newFormGroup">
+
+            <ng-template matStepLabel>plazas</ng-template>
+            <div class="form-group">
+              <input type="text" name="" formControlName="plazas" class="form-control" required>
+              <label for="plazas">Plazas del vehiculo</label>
+            </div>
+
+          </mat-step>
+
+          <mat-step [stepControl]="newFormGroup">
+
+            <ng-template matStepLabel>precio por dia</ng-template>
+            <div class="form-group">
+              <input type="text" name="" formControlName="precio" class="form-control" required>
+              <label for="precio">Precio del vehiculo</label>
+            </div>
+
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>Done</ng-template>
+            <div>
+
+              <button type="button" class="btn btn-outline-success" (click)="onCreate()">Introducir </button>
+            </div>
+          </mat-step>
+        </mat-horizontal-stepper>
+      </form>
     </div>
   </ng-template>
+
+
   <div class="col col-md-6 col-lg-4 col-xl-3 py-3" *ngFor="let coche of coches">
     <!-- (click)="onSelect(coche)"-->
     <mat-card class="card" [class.select]="coche == selectedCoche">

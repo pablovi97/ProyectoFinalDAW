@@ -28,16 +28,18 @@ export class CochesDetallesComponent implements OnInit {
     dc.fkCoche = coche.idCoche;
     dc.cantidad = + (<HTMLInputElement>document.getElementById('cantidad')).value;
     dc.precioTotal = dc.cantidad * coche.precio;
-    //LAS FECHAS NO SE PILLAN BIEN
     dc.fechaIniRent = (<HTMLInputElement>document.getElementById('fechaMin')).value;
     dc.fechaFinRent = (<HTMLInputElement>document.getElementById('fechaMax')).value;
     var pedido = JSON.parse(sessionStorage.getItem('pedido'));
     var bool: boolean = false;
+    //Verificamos si hay alguna sesion de pedido creado , en caso de si usamos esa por lo contrario creamos una nueva
     if (sessionStorage.getItem('pedido') != null) {  
     
       var detalle = pedido.detallesPedidos;
       for (let obj of detalle) {
+        //Si es el mismo coche (que se comparan con su id) se suma la cantidad
         if (obj.fkCoche == coche.idCoche) {
+          //Si tienen la misma fecha se suman las cantidades si no se añade como un DetallePedido Nuevo
           if(obj.fechaIniRent == dc.fechaIniRent && obj.fechaFinRent == dc.fechaFinRent  ){
             obj.cantidad += dc.cantidad;
             bool = true;

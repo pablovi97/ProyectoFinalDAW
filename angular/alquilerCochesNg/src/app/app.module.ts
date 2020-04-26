@@ -12,7 +12,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-import { FormsModule } from '@angular/forms';
+import { FormsModule , ReactiveFormsModule  } from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatTreeModule} from '@angular/material/tree';
@@ -22,6 +22,8 @@ import {MatSliderModule} from '@angular/material/slider';
 import {MatStepperModule} from '@angular/material/stepper';
 import { LogoutComponent } from './components/logout/logout.component';
 import { CarritoComponent } from './components/carrito/carrito.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +34,7 @@ import { CarritoComponent } from './components/carrito/carrito.component';
     RegisterComponent,
     LogoutComponent,
     CarritoComponent,
+
 
   
 
@@ -51,10 +54,13 @@ import { CarritoComponent } from './components/carrito/carrito.component';
     MatSliderModule,
     MatListModule,
     MatSelectModule,
-    MatTreeModule
+    MatTreeModule,
+    ReactiveFormsModule,
 
+
+ 
   ],
-  providers: [],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

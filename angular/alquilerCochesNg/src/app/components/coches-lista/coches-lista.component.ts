@@ -20,11 +20,44 @@ export class CochesListaComponent implements OnInit {
   usuario: Usuario | null;
   rol: string | null;
 
+
+
+
+///
+
+carroceria: Carr[] = [
+  {value: 'coupe', viewValue: 'Coupe'},
+  {value: 'berlina', viewValue: 'Berlina'},
+  {value: 'cabrio', viewValue: 'Cabrio'},
+  {value: 'familiar', viewValue: 'familiar'},
+  {value: 'monovolumen', viewValue: 'monovolumen'},
+  {value: '4x4suv', viewValue: '4x4 SUV'},
+  {value: 'pick up', viewValue: 'Pick Up'},
+];
+
+  @Output() newStu = new EventEmitter();
+  newForm: FormGroup = this.newFormGroup();
+
   ngOnInit() {
     this.getCoches();
   }
+//Prueba
+  newFormGroup(){
+    return new FormGroup({
+      carroceria: new FormControl('0', Validators.required),
+      marca: new FormControl('', Validators.required),
+      stock: new FormControl('', Validators.required),
+      km: new FormControl('', Validators.required),
+      motor: new FormControl('', Validators.required),
+      anio: new FormControl('', Validators.required),
+      precio: new FormControl('', Validators.required),
+      CV: new FormControl('', Validators.required),
+      plazas: new FormControl('', Validators.required),
+    });
+  }
 
 
+  ///
   onDelete(coche: Coche) {
     const scope = this;
     scope._apiService.deleteCoche(coche.idCoche).subscribe();
@@ -58,18 +91,19 @@ export class CochesListaComponent implements OnInit {
   }
 
   onCreate() {
-    var tipoCarroceria = (<HTMLInputElement>document.getElementById('carroceria')).value
-    var marca = (<HTMLInputElement>document.getElementById('marca')).value
-    var stockModelo = +(<HTMLInputElement>document.getElementById('stock')).value
-    var km = +(<HTMLInputElement>document.getElementById('km')).value
-    var motor = (<HTMLInputElement>document.getElementById('motor')).value
-    var anio = +(<HTMLInputElement>document.getElementById('anio')).value
-    var precio = +(<HTMLInputElement>document.getElementById('precio')).value
-    var cv = +(<HTMLInputElement>document.getElementById('CV')).value
-    var plazas = +(<HTMLInputElement>document.getElementById('plazas')).value
-   
+     var tipoCarroceria = this.newForm.get('carroceria').value;
+     var marca =  this.newForm.get('marca').value;
+     var stockModelo = +this.newForm.get('stock').value;
+     var km = +this.newForm.get('km').value;
+     var motor = this.newForm.get('motor').value;
+     var anio = +this.newForm.get('anio').value;
+     var precio = +this.newForm.get('precio').value;
+     var cv = +this.newForm.get('CV').value;
+     var plazas = +this.newForm.get('plazas').value;
+
       this._apiService.introducirCoche( tipoCarroceria, marca, stockModelo, km, motor, anio
         , precio, cv, plazas).subscribe();
+    
   }
 
 }
@@ -79,4 +113,8 @@ interface Usuario {
   email: string,
   password: string,
   rol: string
+}
+interface Carr {
+  value: string;
+  viewValue: string;
 }
