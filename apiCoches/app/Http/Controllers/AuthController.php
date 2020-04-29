@@ -36,6 +36,7 @@ class AuthController extends Controller
     protected function respondWithToken($token, $user)
     { //Meter datos del usuario
         return response()->json([
+         
             'user' => $user,
             'access_token' => $token,
             'token_type' => 'bearer',

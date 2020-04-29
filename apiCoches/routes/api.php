@@ -18,7 +18,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 */
 Route::apiResource('coches', 'CocheController');
-//Route::apiResource('productos', 'ProductosController')->middleware('roladmin');
 Route::apiResource('detallepedidos', 'DetalleController');
 Route::apiResource('comentarios', 'ComentarioController');
 Route::apiResource('pedidos', 'PedidoController');

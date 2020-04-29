@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Auth } from '../../core/auth.service';
 import { Router } from '@angular/router';
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -9,7 +9,7 @@ import {Location} from '@angular/common';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private _authService: Auth, private _router: Router ,private _location: Location) { }
+  constructor(private _authService: Auth, private _router: Router, private _location: Location) { }
   myIndex: string = '/lista';
 
   ngOnInit(): void {
@@ -19,14 +19,18 @@ export class LoginComponent implements OnInit {
     this._authService.login(user, pass)
       .subscribe(
         data => {
-          console.log(data.user); this.guardarSesion(data.user)
-         // this._router.navigate([this.myIndex]);
-         //CAMBIO
-         this._location.back(); 
+          console.log(data.access_token); this.guardarSesion(data.user)
+          this.guardatToken(data.access_token);
+          this._location.back();
         },
         error => console.log(error)
       );
 
+
+  }
+
+  guardatToken(token: string) {
+    localStorage.setItem('token', token);
 
   }
 

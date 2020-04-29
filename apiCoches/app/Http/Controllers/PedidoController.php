@@ -10,7 +10,8 @@ class PedidoController extends Controller
 
     public function __construct()
     {
-      //  $this->middleware('auth:api')->except(['index', 'show']);
+      //$this->middleware('auth:api')->except(['index', 'show']);
+      //$this->middleware('auth:api');
     }
     /**
      * Display a listing of the resource.
@@ -56,7 +57,14 @@ class PedidoController extends Controller
      */
     public function show(Pedido $pedido)
     {
-        return new PedidoResource($pedido);
+
+        //MODIFICADO
+        //if (auth()->user()->idUsuario == $pedido->fkUsuario) {
+            return new PedidoResource($pedido);
+  //  }else {
+    // return response()->json(['error' => 'You can only edit your own orders.'], 403);
+  // }
+ 
     }
 
     /**

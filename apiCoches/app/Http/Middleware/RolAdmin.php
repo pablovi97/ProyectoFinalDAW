@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Middleware;
-
+//Cambio
 use Tymon\JWTAuth\Facades\JWTAuth;
+//use Tymon\JWTAuth\JWTAuth;
 use Closure;
 
 class RolAdmin
@@ -18,7 +19,7 @@ class RolAdmin
     {
         $token = JWTAuth::parseToken();
         JWTAuth::getPayload();
-        $resp = JWTAuth::getPayload()->get('rol');
+        $resp = JWTAuth::getPayload($token)->get('rol');
         if ($resp == 'admin') {
             return $next($request);
         } else {

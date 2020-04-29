@@ -12,6 +12,7 @@ export class ApiService {
   private _cocheApiUrl = '/api/';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    
   };
 
   constructor(private _http: HttpClient) { }

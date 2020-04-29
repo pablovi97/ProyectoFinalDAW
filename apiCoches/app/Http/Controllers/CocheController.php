@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Coche;
+use App\Http\Middleware\RolAdmin;
 use Illuminate\Http\Request;
 use App\Http\Resources\CocheResource;
 
@@ -10,7 +11,9 @@ class CocheController extends Controller
 {
     public function __construct()
     {
-   //$this->middleware('auth:api')->except(['index','show']);
+ $this->middleware('auth:api')->except(['index','show']);
+ $this->middleware('roladmin')->except(['index','show']);
+ 
     }
     /**
      * Display a listing of the resource.
@@ -72,6 +75,7 @@ class CocheController extends Controller
      */
     public function store(Request $request)
     {
+  
         $coche = Coche::create([
             'marca' =>  $request->marca,
             'tipoCarroceria' => $request->tipoCarroceria,
@@ -86,6 +90,7 @@ class CocheController extends Controller
 
 
             return new CocheResource($coche);
+        
     }
 
     /**
@@ -105,7 +110,7 @@ class CocheController extends Controller
 			// En code podríamos indicar un código de error personalizado de nuestra aplicación si lo deseamos.
 			return response()->json(['errors'=>array(['code'=>404,'message'=>'No se encuentra un coche con ese código.'])],404);
 		}
-        return response()->json(['status'=>'ok','data'=>$coche],200);
+        return response()->json(['status'=>'ok','data'=>$coche ],200);
     }
 
     /**
