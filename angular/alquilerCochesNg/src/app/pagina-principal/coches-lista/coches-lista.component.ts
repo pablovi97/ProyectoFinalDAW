@@ -15,6 +15,7 @@ export class CochesListaComponent implements OnInit {
   coches: Coche[];
   subscription: Subscription;
   selectedCoche: Coche | null = null;
+  editCoche: Coche |null = null;
   constructor(private _apiService: ApiService, private _router: Router) { }
   logged: string;
   usuario: Usuario | null;
@@ -105,6 +106,11 @@ carroceria: Carr[] = [
         , precio, cv, plazas).subscribe();
     
   }
+
+  onEdit(coche: Coche):void{
+    this.selectedCoche = coche;
+    this.editCoche =  coche;
+      }
 
 }
 interface Usuario {

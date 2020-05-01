@@ -4,8 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CochesListaComponent } from './components/coches-lista/coches-lista.component';
-import { CochesDetallesComponent } from './components/coches-detalles/coches-detalles.component';
+import { CochesListaComponent } from './pagina-principal/coches-lista/coches-lista.component';
+import { CochesDetallesComponent } from './pagina-secundaria/coches-detalles/coches-detalles.component';
 import { MainNavComponent } from './components/main-nav/main-nav.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -22,18 +22,24 @@ import {MatSliderModule} from '@angular/material/slider';
 import {MatStepperModule} from '@angular/material/stepper';
 import { LogoutComponent } from './components/logout/logout.component';
 import { CarritoComponent } from './components/carrito/carrito.component';
+import { PaginaPrincipalComponent } from './pagina-principal/pagina-principal.component';
+import { PaginaSecundariaComponent } from './pagina-secundaria/pagina-secundaria.component';
+import { CocheActualizarComponent } from './pagina-principal/coche-actualizar/coche-actualizar.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     CochesListaComponent,
-    CochesDetallesComponent,
+   CochesDetallesComponent,
     MainNavComponent,
     LoginComponent,
     RegisterComponent,
     LogoutComponent,
     CarritoComponent,
+    PaginaPrincipalComponent,
+    PaginaSecundariaComponent,
+    CocheActualizarComponent
 
 
   

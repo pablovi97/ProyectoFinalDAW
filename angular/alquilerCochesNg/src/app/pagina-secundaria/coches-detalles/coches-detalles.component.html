@@ -59,11 +59,18 @@
             </form>
           </mat-card-content>
         </div>
-
+        <ng-container *ngIf="comentario != null ; then existecomentario">
+        </ng-container>
+        <ng-template #existecomentario>
+          
+        </ng-template>
       </div>
-    
+
     </div>
   </mat-card>
+
+
+
 </ng-template>
 
 <ng-template #noexiste>

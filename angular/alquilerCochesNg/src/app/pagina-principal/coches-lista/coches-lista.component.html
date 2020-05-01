@@ -162,9 +162,8 @@
       <ng-template #existe>
         <mat-card-actions style="text-align:center">
           <div class="btn-group" role="group" aria-label="Basic example">
-            <button mat-raised-button type="button" class="btn btn-sm btn-outline-warning">Editar</button>
-            <button mat-stroked-button type="button" class="btn btn-sm btn-outline-danger"
-              (click)="onDelete(coche)">Eliminar</button>
+            <button mat-raised-button type="button" class="btn btn-sm btn-outline-warning" (click)="onEdit(coche)">Editar</button>
+            <button mat-stroked-button type="button" class="btn btn-sm btn-outline-danger" (click)="onDelete(coche)">Eliminar</button> 
           </div>
         </mat-card-actions>
       </ng-template>
