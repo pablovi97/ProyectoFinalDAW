@@ -120,13 +120,15 @@ class CocheController extends Controller
      * @param  \App\Coche  $coche
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Coche $coche)
+    public function update(Request $request, $id)
     {
+        $coche=Coche::find($id);
         $coche->marca = $request->marca ?? $coche->marca;
         $coche->stockModelo = $request->stock ?? $coche->stockModelo;
         $coche->km = $request->km ?? $coche->km;
         $coche->precio = $request->precio ?? $coche->precio;
         $coche->save();
+    
         return new cocheResource($coche);
     }
 

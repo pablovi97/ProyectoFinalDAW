@@ -47,6 +47,7 @@ export class CochesDetallesComponent implements OnInit {
           //Si tienen la misma fecha se suman las cantidades si no se añade como un DetallePedido Nuevo
           if (obj.fechaIniRent == dc.fechaIniRent && obj.fechaFinRent == dc.fechaFinRent) {
             obj.cantidad += dc.cantidad;
+            dc.precioTotal = dc.cantidad * coche.precio;
             bool = true;
           }
 

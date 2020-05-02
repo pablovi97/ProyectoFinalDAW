@@ -16,7 +16,8 @@ export class CocheActualizarComponent implements OnInit {
 
 
   subirActualizacion():void{
-    this._apiService.actualizarCoche(this.cocheEdit).subscribe(error => console.log(error));
+    this._apiService.actualizarCoche(this.cocheEdit)
+    .subscribe(error => console.log(error));
 
   }
 

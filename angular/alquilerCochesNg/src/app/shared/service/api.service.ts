@@ -12,21 +12,15 @@ import { element } from 'protractor';
 
 export class ApiService {
 
-
-  headers = new Headers();
+//CREAMOS NUESTRO HEADER QUE SE ENVIARAN EN TODAS NUESTRAS PETICIONES
+ headers = new HttpHeaders({
+   'Authorization' : 'bearer ' +localStorage.getItem('token'),
+   'Content-Type': 'application/json'
+ });
 
   private _cocheApiUrl = '/api/';
-  /*httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-    //Authheaders :new HttpHeaders({'Authorization': 'Bearer '+localStorage.getItem('token')})
 
-  };*/
-
-  constructor(private _http: HttpClient) { 
-
-    this.headers.append( 'Content-Type', 'application/json');
-    this.headers.append('Authorization' , 'Bearer '+localStorage.getItem('token'));
-  }
+  constructor(private _http: HttpClient) { }
 
 
   getCochesObserv(): Observable<Coche[]> {
@@ -72,9 +66,11 @@ export class ApiService {
   }
 
 
-  actualizarCoche(coche: Coche): Observable<any> {
+  actualizarCoche(coche: Coche): Observable<void> {
     const url_api = this._cocheApiUrl + "coches/" + coche.idCoche;
-    let marca = coche.marca;
+    console.log("update");
+    console.log(coche);
+   /* let marca = coche.marca;
     let tipoCarroceria = coche.tipoCarroceria;
     let km = coche.km;
     let motor = coche.motor;
@@ -82,12 +78,13 @@ export class ApiService {
     let anio = coche.anio;
     let CV = coche.CV;
     let plazas = coche.plazas;
-    let precio = coche.plazas;
+    let precio = coche.plazas;*/
+    
     return this._http
-      .post(
+      .put<void>(
         url_api,
-        { marca, tipoCarroceria, km, motor, stockModelo, anio, CV, plazas, precio },
-        //{ headers: this.httpOptions.headers }
+         /*marca, tipoCarroceria, km, motor, stockModelo, anio, CV, plazas, precio*/ coche ,
+       { headers: this.headers }
       ).pipe(map(data => data));
   }
 
@@ -97,7 +94,7 @@ export class ApiService {
     //Borramos el coche con su id
     console.log("entra en el delete")
     const scope = this;
-    return scope._http.delete(this._cocheApiUrl + 'coches/' + id);
+    return scope._http.delete(this._cocheApiUrl + 'coches/' + id , { headers: this.headers });
   }
 
   introducirCoche(tipoCarroceria: string, marca: string, stockModelo: number
@@ -108,7 +105,7 @@ export class ApiService {
       .post(
         url_api,
         { marca, tipoCarroceria, km, motor, stockModelo, anio, CV, plazas, precio },
-        //{ headers: this.httpOptions.headers }
+        { headers: this.headers }
       ).pipe(map(data => data));
   }
 
@@ -118,7 +115,7 @@ export class ApiService {
     return this._http.post(
       url_api,
       { fkUsuario, fechaPed },
-      //{ headers: this.httpOptions.headers }
+      { headers: this.headers }
     ).pipe(map(data => data));
 
   }
@@ -129,7 +126,7 @@ export class ApiService {
     return this._http.post(
       url_api,
       { fkPedido, fkCoche, cantidad, precioTotal, fechaIniRent, fechaFinRent },
-     // { headers: this.httpOptions.headers }
+      { headers: this.headers }
     ).pipe(map(data => data));
   }
 
