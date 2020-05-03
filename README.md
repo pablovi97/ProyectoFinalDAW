@@ -35,9 +35,8 @@ Se pretende crear una web de alquiler de coches en la cual los usuarios puede al
 
 ## Memoria 15/04
 >**Usuarios**
-    * [Admin] = pablo , '1q2w3e4r'
-
-    * [usuario] = anna , '1q2w3e4r'
+* [Admin] = pablo , '1q2w3e4r'
+* [usuario] = anna , '1q2w3e4r'
 
 * Creamos un proxy para saltarnos el CORS que puede tener nuestra api y que nos puede generar problemas
     ![img](./images/05.PNG)
