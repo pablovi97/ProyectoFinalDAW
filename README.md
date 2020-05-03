@@ -31,7 +31,7 @@ Se pretende crear una web de alquiler de coches en la cual los usuarios puede al
 >**Por ultimo abrimos el proyecto de angular alquilerCochesNg y ejecutamos el siguiente comando (npm start)**
 ![img](./images/04.PNG)
 
-<div id='id3'/>
+<div id='id2'/>
 
 ## Memoria 15/04
 >**Usuarios**
@@ -62,7 +62,7 @@ Se pretende crear una web de alquiler de coches en la cual los usuarios puede al
 
     ![img](./images/12.PNG)
 
-<div id='id1'/>
+<div id='id3'/>
 
 ## Memoria 04/05
 * Introducimos cierta seguridad en la aplicación , para ello hacemos lo siguiente:
@@ -80,6 +80,7 @@ Se pretende crear una web de alquiler de coches en la cual los usuarios puede al
     * Por ultimo en el fichero donde hacemos nuestras consultas a la API introducimos el token en el header de la siguiente manera:
         >Introducimos el token en el header:
         ![img](./images/17.PNG)
+        
         >Usamos el header para nuestras consultas:
         ![img](./images/18.PNG)
 
