@@ -3,38 +3,7 @@
   </ng-container>
   <ng-template #exist>
     <div class="col-12">
-      <!--
-      <h2>Introduce un nuevo vehiculo</h2>
-      <form action="" method="POST">
-        <label for="carroceria">Tipo de carroceria</label>
-        <input type="text" name="" id="carroceria">
-
-        <label for="marca">Marca del vehiculo</label>
-        <input type="text" name="" id="marca">
-
-        <label for="stock">Stock del modelo</label>
-        <input type="text" name="" id="stock">
-
-        <label for="km">KM del vehiculo</label>
-        <input type="text" name="" id="km">
-
-        <label for="motor">Motor del modelo</label>
-        <input type="text" name="" id="motor">
-
-        <label for="anio">Año del modelo</label>
-        <input type="text" name="" id="anio">
-
-        <label for="precio">Precio del Vehiculo</label>
-        <input type="text" name="" id="precio">
-
-        <label for="CV">CV del Vehiculo</label>
-        <input type="text" name="" id="CV">
-
-        <label for="plazas">Plazas del Vehiculo</label>
-        <input type="text" name="" id="plazas"> <br>
-        <button type="button" class="btn btn-outline-success"  (click)="onCreate()">Introducir </button>
-      </form>
-    -->
+     
       <form [formGroup]="newForm">
         <mat-horizontal-stepper linear>
           <mat-step [stepControl]="newFormGroup">

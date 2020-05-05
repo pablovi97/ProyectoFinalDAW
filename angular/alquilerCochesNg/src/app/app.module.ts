@@ -25,6 +25,7 @@ import { CarritoComponent } from './components/carrito/carrito.component';
 import { PaginaPrincipalComponent } from './pagina-principal/pagina-principal.component';
 import { PaginaSecundariaComponent } from './pagina-secundaria/pagina-secundaria.component';
 import { CocheActualizarComponent } from './pagina-principal/coche-actualizar/coche-actualizar.component';
+import { CrearComentariosComponent } from './pagina-secundaria/crear-comentarios/crear-comentarios.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { CocheActualizarComponent } from './pagina-principal/coche-actualizar/co
     CarritoComponent,
     PaginaPrincipalComponent,
     PaginaSecundariaComponent,
-    CocheActualizarComponent
+    CocheActualizarComponent,
+    CrearComentariosComponent
 
 
   

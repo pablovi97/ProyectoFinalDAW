@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Comentario } from '../models/comentario.model';
-import { element } from 'protractor';
+//import { element } from 'protractor';
 @Injectable({
   providedIn: 'root'
 })
@@ -12,11 +12,11 @@ import { element } from 'protractor';
 
 export class ApiService {
 
-//CREAMOS NUESTRO HEADER QUE SE ENVIARAN EN TODAS NUESTRAS PETICIONES
- headers = new HttpHeaders({
-   'Authorization' : 'bearer ' +localStorage.getItem('token'),
-   'Content-Type': 'application/json'
- });
+  //CREAMOS NUESTRO HEADER QUE SE ENVIARAN EN TODAS NUESTRAS PETICIONES
+  headers = new HttpHeaders({
+    'Authorization': 'bearer ' + localStorage.getItem('token'),
+    'Content-Type': 'application/json'
+  });
 
   private _cocheApiUrl = '/api/';
 
@@ -64,27 +64,45 @@ export class ApiService {
     });
     return of(COMENT);
   }
+  getComentarioIdCoche(idCoche: number): Observable<Comentario[]> {
+    const COMENT: Comentario[] = [];
+    const scope = this;
+    const getUrl = this._cocheApiUrl + `comentarios?fkCocheCm=`+idCoche;
+    scope._http.get(getUrl).subscribe((result: any) => {
+      result.forEach((element: any) => {
+        COMENT.push(new Comentario(
+          element.idComentario,
+          element.fkCocheCm,
+          element.fkUsuarioCm,
+          element.contenido,
+          element.puntuacion
+        ));
+      });
 
+
+    });
+    console.log(COMENT);
+    return of(COMENT);
+  }
+  crearComentarios(contenido :string ,fkUsuarioCm: number,fkCocheCm: number, puntuacion: number ):Observable<any>{
+    const url_api = this._cocheApiUrl + "comentarios/";
+    return this._http
+      .post(
+        url_api,
+        { contenido,fkUsuarioCm ,fkCocheCm ,puntuacion },
+        { headers: this.headers }
+      ).pipe(map(data => data));
+  }
 
   actualizarCoche(coche: Coche): Observable<void> {
     const url_api = this._cocheApiUrl + "coches/" + coche.idCoche;
     console.log("update");
     console.log(coche);
-   /* let marca = coche.marca;
-    let tipoCarroceria = coche.tipoCarroceria;
-    let km = coche.km;
-    let motor = coche.motor;
-    let stockModelo = coche.stockModelo;
-    let anio = coche.anio;
-    let CV = coche.CV;
-    let plazas = coche.plazas;
-    let precio = coche.plazas;*/
-    
     return this._http
       .put<void>(
         url_api,
-         /*marca, tipoCarroceria, km, motor, stockModelo, anio, CV, plazas, precio*/ coche ,
-       { headers: this.headers }
+        coche,
+        { headers: this.headers }
       ).pipe(map(data => data));
   }
 
@@ -94,7 +112,7 @@ export class ApiService {
     //Borramos el coche con su id
     console.log("entra en el delete")
     const scope = this;
-    return scope._http.delete(this._cocheApiUrl + 'coches/' + id , { headers: this.headers });
+    return scope._http.delete(this._cocheApiUrl + 'coches/' + id, { headers: this.headers });
   }
 
   introducirCoche(tipoCarroceria: string, marca: string, stockModelo: number

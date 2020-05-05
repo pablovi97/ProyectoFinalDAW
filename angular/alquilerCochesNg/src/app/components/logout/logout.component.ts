@@ -21,6 +21,7 @@ export class LogoutComponent implements OnInit {
     if(localStorage.getItem('token')){
       localStorage.removeItem('token')
     }
+ 
     this._router.navigate(["/lista"]);
   }
 
