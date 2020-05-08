@@ -11,17 +11,17 @@ export class LogoutComponent implements OnInit {
 
   ngOnInit(): void {
     sessionStorage.removeItem('usuario');
-  
-    if( sessionStorage.getItem('pedido')){
+
+    if (sessionStorage.getItem('pedido')) {
       sessionStorage.removeItem('pedido');
     }
-    if(localStorage.getItem('coche')){
+    if (localStorage.getItem('coche')) {
       localStorage.removeItem('coche')
     }
-    if(localStorage.getItem('token')){
+    if (localStorage.getItem('token')) {
       localStorage.removeItem('token')
     }
- 
+    localStorage.setItem('logout', 'logout');
     this._router.navigate(["/lista"]);
   }
 

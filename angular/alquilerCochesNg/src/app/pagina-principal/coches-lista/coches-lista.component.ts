@@ -16,7 +16,8 @@ export class CochesListaComponent implements OnInit {
   subscription: Subscription;
   selectedCoche: Coche | null = null;
   editCoche: Coche |null = null;
-  constructor(private _apiService: ApiService, private _router: Router) { }
+  constructor(private _apiService: ApiService, private _router: Router) {
+   }
   logged: string;
   usuario: Usuario | null;
   rol: string | null;
@@ -40,7 +41,13 @@ carroceria: Carr[] = [
   newForm: FormGroup = this.newFormGroup();
 
   ngOnInit() {
+   
+    
     this.getCoches();
+    if (localStorage.getItem('logout')) {
+      localStorage.removeItem('logout');
+      location.reload();
+    }
   }
 //Prueba
   newFormGroup(){
@@ -62,6 +69,7 @@ carroceria: Carr[] = [
   onDelete(coche: Coche) {
     const scope = this;
     scope._apiService.deleteCoche(coche.idCoche).subscribe();
+  location.reload();
   }
 
   getCoches(): void {
@@ -73,6 +81,7 @@ carroceria: Carr[] = [
         next(cochesObserv) { scope.coches = cochesObserv; }
       }
     )
+
     this.getlogeado();
   }
 

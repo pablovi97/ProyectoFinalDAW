@@ -44,6 +44,11 @@ class ComentarioController extends Controller
             $ComentariosFiltrados = Comentario::where('puntuacion', 'like', $parametroValue)->get();
             return $ComentariosFiltrados;
         }
+        if ($request->input('pregunta') != null) {
+            $parametroValue = $request->input('pregunta');
+            $ComentariosFiltrados = Comentario::where('pregunta', 'like', $parametroValue)->get();
+            return $ComentariosFiltrados;
+        }
 
         return ComentarioResource::collection(Comentario::all());
     }
@@ -63,6 +68,7 @@ class ComentarioController extends Controller
             'fkUsuarioCm' => $request->fkUsuarioCm,
             'fkCocheCm' => $request->fkCocheCm,
             'puntuacion' => $request->puntuacion,
+            'pregunta' => $request->pregunta,
             ]);
 
 
@@ -98,6 +104,7 @@ class ComentarioController extends Controller
         $Comentario->fkCocheCm = $request->fkCocheCm ?? $Comentario->fkCocheCm;
         $Comentario->puntuacion = $request->puntuacion ?? $Comentario->puntuacion;
         $Comentario->fkUsuarioCm = $request->fkUsuarioCm ?? $Comentario->fkUsuarioCm;
+        $Comentario->pregunta = $request->pregunta ?? $Comentario->pregunta;
         $Comentario->save();
         return new ComentarioResource($Comentario);
     }

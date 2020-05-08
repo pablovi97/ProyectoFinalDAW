@@ -35,6 +35,7 @@ export class CochesDetallesComponent implements OnInit {
     dc.precioTotal = dc.cantidad * coche.precio;
     dc.fechaIniRent = (<HTMLInputElement>document.getElementById('fechaMin')).value;
     dc.fechaFinRent = (<HTMLInputElement>document.getElementById('fechaMax')).value;
+    dc.nombreVehiculo = coche.marca;
     var pedido = JSON.parse(sessionStorage.getItem('pedido'));
     var bool: boolean = false;
     //Verificamos si hay alguna sesion de pedido creado , en caso de si usamos esa por lo contrario creamos una nueva
@@ -64,6 +65,7 @@ export class CochesDetallesComponent implements OnInit {
     }
     let pedidoJSON = JSON.stringify(pedido);
     sessionStorage.setItem('pedido', pedidoJSON);
+    localStorage.setItem('detalles', 'detalles');
     this._router.navigate(['lista']);
 
   }

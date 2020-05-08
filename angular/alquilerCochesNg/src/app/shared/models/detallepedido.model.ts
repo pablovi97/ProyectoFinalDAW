@@ -9,6 +9,7 @@ export class Detallepedido {
     public fechaIniRent: string
     public fechaFinRent: string
     public pedio : Pedido
+    public nombreVehiculo : string |null
     constructor(
   
      

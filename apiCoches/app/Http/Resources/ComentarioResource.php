@@ -21,6 +21,7 @@ class ComentarioResource extends JsonResource
             'fkUsuarioCm' => $this->fkUsuarioCm,
             'contenido' => $this->contenido,
             'puntuacion' => $this->puntuacion,
+            'pregunta' => $this->pregunta,
             ];
     }
 }

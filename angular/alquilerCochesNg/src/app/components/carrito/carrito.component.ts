@@ -24,6 +24,21 @@ export class CarritoComponent implements OnInit {
     }
   }
 
+
+  eliminarDetalle(det: Detallepedido) {
+    console.log(det);
+    let index = this.pedido.detallesPedidos.indexOf(det);
+    this.pedido.detallesPedidos.splice(index, 1);
+    let pedidoJSON = JSON.stringify(this.pedido);
+    sessionStorage.setItem('pedido', pedidoJSON);
+    if (this.pedido.detallesPedidos.length == 0) {
+
+      sessionStorage.removeItem('pedido')
+    }
+    location.reload();
+
+
+  }
   subirPedido() {
     if (sessionStorage.getItem('usuario')) {
 

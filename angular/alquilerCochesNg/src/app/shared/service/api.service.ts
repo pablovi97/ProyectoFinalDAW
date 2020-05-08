@@ -41,11 +41,12 @@ export class ApiService {
           element.plazas));
       });
     });
+  
     //Devolvemos todos los coches de la base de datos
     return of(CAR);
   }
 
-  getComentario(): Observable<Comentario[]> {
+ /* getComentario(): Observable<Comentario[]> {
     const COMENT: Comentario[] = [];
     const scope = this;
     const getUrl = this._cocheApiUrl + `comentarios`;
@@ -56,18 +57,19 @@ export class ApiService {
           element.fkCocheCm,
           element.fkUsuarioCm,
           element.contenido,
-          element.puntuacion
+          element.puntuacion,
+          element.pregunta
         ));
       });
 
 
     });
     return of(COMENT);
-  }
+  }*/
   getComentarioIdCoche(idCoche: number): Observable<Comentario[]> {
     const COMENT: Comentario[] = [];
     const scope = this;
-    const getUrl = this._cocheApiUrl + `comentarios?fkCocheCm=`+idCoche;
+    const getUrl = this._cocheApiUrl + `comentarios?fkCocheCm=` + idCoche;
     scope._http.get(getUrl).subscribe((result: any) => {
       result.forEach((element: any) => {
         COMENT.push(new Comentario(
@@ -75,7 +77,8 @@ export class ApiService {
           element.fkCocheCm,
           element.fkUsuarioCm,
           element.contenido,
-          element.puntuacion
+          element.puntuacion,
+          element.pregunta
         ));
       });
 
@@ -84,16 +87,22 @@ export class ApiService {
     console.log(COMENT);
     return of(COMENT);
   }
-  crearComentarios(contenido :string ,fkUsuarioCm: number,fkCocheCm: number, puntuacion: number ):Observable<any>{
+  crearComentarios(contenido: string, fkUsuarioCm: number, fkCocheCm: number, puntuacion: number, pregunta: number | null): Observable<any> {
+    
+    console.log("crear coment")
+    console.log(pregunta);
     const url_api = this._cocheApiUrl + "comentarios/";
     return this._http
       .post(
         url_api,
-        { contenido,fkUsuarioCm ,fkCocheCm ,puntuacion },
+        { contenido, fkUsuarioCm, fkCocheCm, puntuacion, pregunta },
         { headers: this.headers }
       ).pipe(map(data => data));
   }
-
+  getComentarioId(id: number): Observable<any> {
+    const url_api = this._cocheApiUrl + "comentarios/" + id;
+    return this._http.get(url_api, { headers: this.headers }).pipe(map(data => data));;
+  }
   actualizarCoche(coche: Coche): Observable<void> {
     const url_api = this._cocheApiUrl + "coches/" + coche.idCoche;
     console.log("update");

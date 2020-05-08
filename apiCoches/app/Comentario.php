@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
+ * @property int $pregunta
  * @property int $idComentario
  * @property int $fkCocheCm
  * @property int $fkUsuarioCm
@@ -12,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $puntuacion
  * @property Coche $coche
  * @property Usuario $usuario
+ * @property Comentario $comentario
  */
 class Comentario extends Model
 {
@@ -30,16 +32,9 @@ class Comentario extends Model
     protected $primaryKey = 'idComentario';
 
     /**
-     * Indicates if the IDs are auto-incrementing.
-     * 
-     * @var bool
-     */
-    public $incrementing = false;
-
-    /**
      * @var array
      */
-    protected $fillable = ['fkCocheCm', 'fkUsuarioCm', 'contenido', 'puntuacion'];
+    protected $fillable = ['pregunta', 'fkCocheCm', 'fkUsuarioCm', 'contenido', 'puntuacion'];
 
     /**
      * Indicates if the model should be timestamped.
@@ -62,5 +57,13 @@ class Comentario extends Model
     public function usuario()
     {
         return $this->belongsTo('App\Usuario', 'fkUsuarioCm', 'idUsuario');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function comentario()
+    {
+        return $this->belongsTo('App\Comentario', 'pregunta', 'idComentario');
     }
 }
