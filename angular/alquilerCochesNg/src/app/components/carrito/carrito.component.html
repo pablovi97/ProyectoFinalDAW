@@ -1,0 +1,48 @@
+<ng-container *ngIf="pedido != null ; then existe ;else noexiste">
+</ng-container>
+
+<ng-template #existe>
+    <div class="container py-2">
+
+        <div class="row ">
+            <div class="col-6">
+                <h1>Tu carrito </h1>
+            </div>
+            <div class="coo-6"><button class="btn btn-warning" (click)="subirPedido()">Pagar <i
+                        class="fas fa-credit-card"> </i></button></div>
+
+
+            <div *ngFor="let det of pedido.detallesPedidos;" class="card bg-dark text-white col-8 py-2 mx-2 ">
+                <h2 class="text-uppercase text-center ">{{det.nombreVehiculo}}</h2>
+
+                <img mat-card-image src="assets/images/{{det.nombreVehiculo}}.jpg" alt="Photo of {{det.nombreVehiculo}}"
+                    style="width:40%;">
+                <div class="cont py-2" >
+                    <p>{{det.cantidad}} coche/s</p>
+                    <p>TOTAL : <strong class="text-success">{{det.precioTotal}}€</strong> </p>
+                    <label for="" id="error" class="bg-danger "></label>
+                    <label for="" id="exito" class="bg-success "></label>
+                    <p>Desde : <input type="date" name="" id="desde" value="{{det.fechaIniRent}}"></p>
+                    <p>Hasta : <input type="date" name="" id="hasta" value="{{det. fechaFinRent}}"></p>
+                    <!--<button class="btn btn-outline-warning" (click)="modificarfechas(det)">Modificar fechas</button>-->
+                </div>
+              
+                <button class="btn btn-danger btn-sm" (click)="eliminarDetalle(det)">X</button>
+            </div>
+
+
+
+
+        </div>
+    </div>
+
+</ng-template>
+
+<ng-template #noexiste>
+    <div class="container">
+
+        <div class="col-12 py-5 text-center"><i class="fas fa-car-crash fa-5x"></i> <br>
+            <p class="display-1">Cesta vacia!</p>
+        </div>
+    </div>
+</ng-template>
