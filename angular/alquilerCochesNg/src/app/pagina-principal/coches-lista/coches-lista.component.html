@@ -3,14 +3,14 @@
   </ng-container>
   <ng-template #exist>
     <div class="col-12">
-     
+
       <form [formGroup]="newForm">
         <mat-horizontal-stepper linear>
           <mat-step [stepControl]="newFormGroup">
 
             <ng-template matStepLabel aria-label="tipo de carroceria">Carroceria</ng-template>
 
-            <!-- <input type="text" name="" >-->
+     
             <mat-form-field>
               <mat-label>Selecciona el tipo de carroceria</mat-label>
               <mat-select formControlName="carroceria" required>
@@ -26,7 +26,7 @@
             <ng-template matStepLabel aria-label="marca del vehiculo">Marca</ng-template>
             <div class="form-group">
 
-              <input type="text" formControlName="marca" id="marca" class="form-control" required>
+              <input type="text" formControlName="marca" id="marca" aria-label="marca del vehiculo" class="form-control" required>
               <label for="marca">Marca del vehiculo</label>
             </div>
 
@@ -36,7 +36,8 @@
 
             <ng-template matStepLabel>Modelo</ng-template>
             <div class="form-group">
-              <input type="text" name="" formControlName="modelo" class="form-control" required>
+              <input type="text" name="" formControlName="modelo"  aria-label="modelo del vehiculo" class="form-control"
+                required>
               <label for="precio">Modelo del vehiculo</label>
             </div>
 
@@ -45,7 +46,7 @@
 
             <ng-template matStepLabel aria-label="stock del vehiculo">Stock</ng-template>
             <div class="form-group">
-              <input type="text" name="" formControlName="stock" class="form-control" required>
+              <input type="text" name="" formControlName="stock" aria-label="stock del vehiculo" class="form-control"required>
               <label for="stock">Stock del vehiculo</label>
             </div>
 
@@ -54,7 +55,7 @@
 
             <ng-template matStepLabel aria-label="tipo de motor"> Motor</ng-template>
             <div class="form-group">
-              <input type="text" name="" formControlName="motor" class="form-control" required>
+              <input type="text" name="" formControlName="motor" aria-label="tipo del motor"  class="form-control" required>
               <label for="motor">Motor del vehiculo</label>
             </div>
 
@@ -63,7 +64,7 @@
 
             <ng-template matStepLabel aria-label="año del vehiculo">Año</ng-template>
             <div class="form-group">
-              <input type="text" name="" formControlName="anio" class="form-control" required>
+              <input type="text" name="" formControlName="anio" class="form-control" aria-label="año de matriculación" required>
               <label for="motor">Año del vehiculo</label>
             </div>
 
@@ -72,7 +73,7 @@
 
             <ng-template matStepLabel aria-label="caballaje">CV</ng-template>
             <div class="form-group">
-              <input type="text" name="" formControlName="CV" class="form-control" required>
+              <input type="text" name="" formControlName="CV" class="form-control"  aria-label="potencia del vehiculo en CV" required>
               <label for="motor">CV del vehiculo</label>
             </div>
 
@@ -81,7 +82,7 @@
 
             <ng-template matStepLabel>KM</ng-template>
             <div class="form-group">
-              <input type="text" name="" formControlName="km" class="form-control" required>
+              <input type="text" name="" formControlName="km" class="form-control" aria-label="Kilometros del vehiculo"   required>
               <label for="km">KMs del vehiculo</label>
             </div>
 
@@ -90,7 +91,7 @@
 
             <ng-template matStepLabel>plazas</ng-template>
             <div class="form-group">
-              <input type="text" name="" formControlName="plazas" class="form-control" required>
+              <input type="text" name="" formControlName="plazas" class="form-control" aria-label="plazas del vehiculo"  required>
               <label for="plazas">Plazas del vehiculo</label>
             </div>
 
@@ -100,7 +101,7 @@
 
             <ng-template matStepLabel>precio por dia</ng-template>
             <div class="form-group">
-              <input type="text" name="" formControlName="precio" class="form-control" required>
+              <input type="text" name="" formControlName="precio" class="form-control" aria-label="precio del vehiculo"   required>
               <label for="precio">Precio del vehiculo</label>
             </div>
 
@@ -109,14 +110,14 @@
 
             <ng-template matStepLabel>Imagen</ng-template>
             <div class="form-group">
-              
-              
+
+
               <form action="" method="post" enctype="multipart/form-data">
-                <input type="file" name="file" id="imagen"  accept="image/*" />
-              
+                <input type="file" name="file" id="imagen" accept="image/*" aria-label="imagen del vehiculo" />
+
               </form>
-              
-             
+
+
 
 
             </div>
@@ -133,10 +134,8 @@
       </form>
     </div>
   </ng-template>
+  <div class="col-12 col-md-6 col-lg-4 col-xl-3 py-3"  *ngFor="let coche of coches">
 
-
-  <div class="col col-md-6 col-lg-4 col-xl-3 py-3" *ngFor="let coche of coches">
-    <!-- (click)="onSelect(coche)"-->
     <mat-card class="card bg-dark text-white" [class.select]="coche == selectedCoche" *ngIf="coche.stockModelo != 0">
       <div class="container" (click)="onSelect(coche)">
         <mat-card-header>
@@ -159,8 +158,10 @@
       <ng-template #existe>
         <mat-card-actions style="text-align:center">
           <div class="btn-group" role="group" aria-label="Basic example">
-            <button mat-raised-button type="button" class="btn btn-sm btn-outline-warning" (click)="onEdit(coche)">Editar</button>
-            <button mat-stroked-button type="button" class="btn btn-sm btn-outline-danger" (click)="onDelete(coche)">Eliminar</button> 
+            <button mat-raised-button type="button" class="btn btn-sm btn-outline-warning"
+              (click)="onEdit(coche)">Editar</button>
+            <button mat-stroked-button type="button" class="btn btn-sm btn-outline-danger"
+              (click)="onDelete(coche)">Eliminar</button>
           </div>
         </mat-card-actions>
       </ng-template>

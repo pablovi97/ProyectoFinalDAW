@@ -13,7 +13,7 @@ import { Comentario } from '../models/comentario.model';
 export class ApiService {
 
   //CREAMOS NUESTRO HEADER QUE SE ENVIARAN EN TODAS NUESTRAS PETICIONES
-headers : HttpHeaders;
+  headers: HttpHeaders;
   private _cocheApiUrl = '/api/';
 
   constructor(private _http: HttpClient) {
@@ -21,8 +21,8 @@ headers : HttpHeaders;
       'Authorization': 'bearer ' + localStorage.getItem('token'),
       'Content-Type': 'application/json'
     });
-  
-   }
+
+  }
 
 
   getCochesObserv(): Observable<Coche[]> {
@@ -41,35 +41,39 @@ headers : HttpHeaders;
           element.anio, element.precio,
           element.CV,
           element.plazas,
-         element.imagen,
-          element.modelo,));
+          element.imagen,
+          element.modelo));
       });
     });
-  
+
+    //Devolvemos todos los coches de la base de datos
+    return of(CAR);
+  }
+  getCochesObservByMarca(marca: string): Observable<Coche[]> {
+    const CAR: Coche[] = [];
+    const scope = this;
+    const getUrl = this._cocheApiUrl + `coches?marca=` + marca;;
+    scope._http.get(getUrl).subscribe((result: any) => {
+      result.forEach((element: any) => {
+        CAR.push(new Coche(
+          element.idCoche,
+          element.tipoCarroceria,
+          element.marca,
+          element.stockModelo,
+          element.km,
+          element.motor,
+          element.anio, element.precio,
+          element.CV,
+          element.plazas,
+          element.imagen,
+          element.modelo));
+      });
+    });
+
     //Devolvemos todos los coches de la base de datos
     return of(CAR);
   }
 
- /* getComentario(): Observable<Comentario[]> {
-    const COMENT: Comentario[] = [];
-    const scope = this;
-    const getUrl = this._cocheApiUrl + `comentarios`;
-    scope._http.get(getUrl).subscribe((result: any) => {
-      result['data'].forEach((element: any) => {
-        COMENT.push(new Comentario(
-          element.idComentario,
-          element.fkCocheCm,
-          element.fkUsuarioCm,
-          element.contenido,
-          element.puntuacion,
-          element.pregunta
-        ));
-      });
-
-
-    });
-    return of(COMENT);
-  }*/
   getComentarioIdCoche(idCoche: number): Observable<Comentario[]> {
     const COMENT: Comentario[] = [];
     const scope = this;
@@ -88,12 +92,12 @@ headers : HttpHeaders;
 
 
     })
-    scope._http.get(getUrl).pipe(map(resultado => localStorage.setItem('comentario' , JSON.stringify(resultado))));
+    scope._http.get(getUrl).pipe(map(resultado => localStorage.setItem('comentario', JSON.stringify(resultado))));
     console.log(COMENT);
     return of(COMENT);
   }
   crearComentarios(contenido: string, fkUsuarioCm: number, fkCocheCm: number, puntuacion: number, pregunta: number | null): Observable<any> {
-    
+
     console.log("crear coment")
     console.log(pregunta);
     const url_api = this._cocheApiUrl + "comentarios/";
@@ -135,12 +139,12 @@ headers : HttpHeaders;
 
   introducirCoche(tipoCarroceria: string, marca: string, stockModelo: number
     , km: number, motor: string, anio: number
-    , precio: number, CV: number, plazas: number ,modelo : string|null ,imagen :string|null): Observable<any> {
+    , precio: number, CV: number, plazas: number, modelo: string | null, imagen: string | null): Observable<any> {
     const url_api = this._cocheApiUrl + "coches/";
     return this._http
       .post(
         url_api,
-        { marca,modelo , tipoCarroceria, km, motor, stockModelo, anio, CV, plazas, precio ,imagen },
+        { marca, modelo, tipoCarroceria, km, motor, stockModelo, anio, CV, plazas, precio, imagen },
         { headers: this.headers }
       ).pipe(map(data => data));
   }

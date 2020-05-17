@@ -15,9 +15,10 @@ export class CochesListaComponent implements OnInit {
   coches: Coche[];
   subscription: Subscription;
   selectedCoche: Coche | null = null;
-  editCoche: Coche |null = null;
+  editCoche: Coche | null = null;
+  busqueda: string | null;
   constructor(private _apiService: ApiService, private _router: Router) {
-   }
+  }
   logged: string;
   usuario: Usuario | null;
   rol: string | null;
@@ -27,30 +28,37 @@ export class CochesListaComponent implements OnInit {
 
 
 
-carroceria: Carr[] = [
-  {value: 'coupe', viewValue: 'Coupe'},
-  {value: 'berlina', viewValue: 'Berlina'},
-  {value: 'cabrio', viewValue: 'Cabrio'},
-  {value: 'familiar', viewValue: 'familiar'},
-  {value: 'monovolumen', viewValue: 'monovolumen'},
-  {value: '4x4suv', viewValue: '4x4 SUV'},
-  {value: 'pick up', viewValue: 'Pick Up'},
-];
+  carroceria: Carr[] = [
+    { value: 'coupe', viewValue: 'Coupe' },
+    { value: 'berlina', viewValue: 'Berlina' },
+    { value: 'cabrio', viewValue: 'Cabrio' },
+    { value: 'familiar', viewValue: 'familiar' },
+    { value: 'monovolumen', viewValue: 'monovolumen' },
+    { value: '4x4suv', viewValue: '4x4 SUV' },
+    { value: 'pick up', viewValue: 'Pick Up' },
+  ];
 
   @Output() newStu = new EventEmitter();
   newForm: FormGroup = this.newFormGroup();
 
   ngOnInit() {
-   
-    
+
+    this.parametroBusqueda();
     this.getCoches();
+
     if (localStorage.getItem('logout')) {
       localStorage.removeItem('logout');
       location.reload();
     }
   }
+  parametroBusqueda() {
+    console.log('entra');
+    this.busqueda = localStorage.getItem('valorBusqueda');
+    console.log(this.busqueda);
+    localStorage.removeItem('valorBusqueda');
 
-  newFormGroup(){
+  }
+  newFormGroup() {
     return new FormGroup({
       carroceria: new FormControl('0', Validators.required),
       marca: new FormControl('', Validators.required),
@@ -66,22 +74,32 @@ carroceria: Carr[] = [
   }
 
 
-  ///
+  //Funcion para borra un coche de la base de datos
   onDelete(coche: Coche) {
     const scope = this;
     scope._apiService.deleteCoche(coche.idCoche).subscribe();
-  location.reload();
+    location.reload();
   }
 
   getCoches(): void {
     console.log('Entra en el metodo!')
     const scope = this;
-    scope.subscription = scope._apiService.getCochesObserv().subscribe(
 
-      {
-        next(cochesObserv) { scope.coches = cochesObserv; }
-      }
-    )
+    if (this.busqueda == null) {
+      scope.subscription = scope._apiService.getCochesObserv().subscribe(
+
+        {
+          next(cochesObserv) { scope.coches = cochesObserv; }
+        }
+      )
+    } else {
+      scope.subscription = scope._apiService.getCochesObservByMarca(this.busqueda).subscribe(
+
+        {
+          next(cochesObserv) { console.log("entra en busqueda"), scope.coches = cochesObserv; }
+        })
+    }
+
 
     this.getlogeado();
   }
@@ -102,28 +120,34 @@ carroceria: Carr[] = [
   }
 
   onCreate() {
-     var tipoCarroceria = this.newForm.get('carroceria').value;
-     var marca =  this.newForm.get('marca').value;
-     var stockModelo = +this.newForm.get('stock').value;
-     var km = +this.newForm.get('km').value;
-     var motor = this.newForm.get('motor').value;
-     var anio = +this.newForm.get('anio').value;
-     var precio = +this.newForm.get('precio').value;
-     var cv = +this.newForm.get('CV').value;
-     var plazas = +this.newForm.get('plazas').value;
-     var modelo = this.newForm.get('modelo').value;;
-     var imagen = (<HTMLInputElement>document.getElementById('imagen')).value;
 
 
-      this._apiService.introducirCoche( tipoCarroceria, marca, stockModelo, km, motor, anio
-        , precio, cv, plazas ,modelo , imagen).subscribe();
-    
+    var tipoCarroceria = this.newForm.get('carroceria').value;
+
+
+    var marca = this.newForm.get('marca').value;
+    var stockModelo = +this.newForm.get('stock').value;
+    var km = +this.newForm.get('km').value;
+    var motor = this.newForm.get('motor').value;
+    var anio = +this.newForm.get('anio').value;
+    var precio = +this.newForm.get('precio').value;
+    var cv = +this.newForm.get('CV').value;
+    var plazas = +this.newForm.get('plazas').value;
+    var modelo = this.newForm.get('modelo').value;;
+    var imagen = (<HTMLInputElement>document.getElementById('imagen')).value;
+
+
+    this._apiService.introducirCoche(tipoCarroceria, marca, stockModelo, km, motor, anio
+      , precio, cv, plazas, modelo, imagen).subscribe();
+
   }
 
-  onEdit(coche: Coche):void{
+  onEdit(coche: Coche): void {
     this.selectedCoche = coche;
-    this.editCoche =  coche;
-      }
+    this.editCoche = coche;
+  }
+
+
 
 }
 interface Usuario {

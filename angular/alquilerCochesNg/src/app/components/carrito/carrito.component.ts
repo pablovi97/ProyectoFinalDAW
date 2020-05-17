@@ -76,9 +76,10 @@ export class CarritoComponent implements OnInit {
 
 
   }
-  /*
+ /*
   modificarfechas(detalle :Detallepedido){
     let index = this.pedido.detallesPedidos.indexOf(detalle);
+    //Comporbamos si hemos introducido mal la fecha
    if (new Date((<HTMLInputElement>document.getElementById('desde')).value) > new Date((<HTMLInputElement>document.getElementById('hasta')).value)) {
     (<HTMLInputElement>document.getElementById('error')).innerText = "Has introducido mal la fecha";
     (<HTMLInputElement>document.getElementById('exito')).innerText = "";

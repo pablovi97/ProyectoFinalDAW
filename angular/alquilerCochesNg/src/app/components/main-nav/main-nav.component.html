@@ -18,25 +18,9 @@
           <a class="nav-link" href="/register">Sign in <span class="sr-only">Sign in</span></a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="/login">About us <span class="sr-only">About us</span></a>
+          <a class="nav-link" href="/about">Contact us <span class="sr-only">About us</span></a>
         </li>
-    <!--  
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-        </a>
- 
-     
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-         
-          <a class="dropdown-item" href="/login">Login</a>
-          <a class="dropdown-item" href="/register">Sign in</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">About us</a>
-        </div>
-     
-     
-      </li>-->
+   
     </ng-template>
       <ng-template #noexiste>
 
@@ -44,27 +28,9 @@
           <a class="nav-link" href="/logout">Logout <span class="sr-only">Logout</span></a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="/login">About us <span class="sr-only">About us</span></a>
-        </li>
-<!--
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            
-          </a>
-   
-       
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-           
-            <a class="dropdown-item" href="/logout">Logout</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">About us</a>
-          </div>
-       
-       
+          <a class="nav-link" href="/about">Contact us <span class="sr-only">About us</span></a>
         </li>
 
--->
 
       </ng-template>
     </ul>
@@ -74,9 +40,9 @@
 
     
 
-      <input class="form-control mr-sm-2 bg-dark border border-top-0 border-left-0 border-white rounded" type="text"
-        placeholder="Search">
-      <button class="btn btn-dark my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+      <input class="form-control mr-sm-2 bg-dark border border-top-0 border-left-0 border-white rounded text-white" type="text"
+        placeholder="Search" id="busqueda">
+      <button class="btn btn-dark my-2 my-sm-0" (click)=busqueda(); type="submit"><i class="fas fa-search"></i></button>
       <button type="button" class="btn btn-dark" (click)=verCarrito()><span class="badge badge-light">{{numeroDetalle}}</span><i class="fas fa-shopping-cart"></i>
       </button>
      
@@ -88,7 +54,7 @@
 
 </nav>
 <div class="main">
-<!--PREUBAAA-->
+
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
