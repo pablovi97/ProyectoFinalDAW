@@ -171,29 +171,29 @@ Se pretende crear una web de alquiler de coches en la cual los usuarios puede al
   >Por ejemplo si introducimos "honda" nos saldran los honda
   ![img](./images/44.PNG)
 
-    * Creamos un localStorage con lo que pusimos en la busqueda y en el componente lista lo recogemos
+   * Creamos un localStorage con lo que pusimos en la busqueda y en el componente lista lo recogemos
 
   ![img](./images/45.PNG)
 
-    * Y con lo anterior hacemos una petición a la base de datos que recoja todos los coches con esa marca
+   * Y con lo anterior hacemos una petición a la base de datos que recoja todos los coches con esa marca
   ![img](./images/46.PNG)
 
 * Mejoramos el aspecto del carrito:
 >Ahora nos muestran datos como el coste total las fechas y se pueden eliminar de la cesta
   ![img](./images/47.PNG)   
 
-    * Cuando no aparece ningun coche se ve esto:
+  * Cuando no aparece ningun coche se ve esto:
   ![img](./images/48.PNG)  
 
 * Tenemos una nueva sección para el usuario logeado que nos mostrará todos nuestros pedidos:
 >Nos enseña la fecha del pedido junto con su id
   ![img](./images/49.PNG)
 
-    * Si clickamos en una tarjeta de pedidos nos enseñaran los detalles del pedido :
+  * Si clickamos en una tarjeta de pedidos nos enseñaran los detalles del pedido :
     >Nos enseñará la fecha inicial y final del alquiler mas el numero del pedido
   ![img](./images/50.PNG)
 
-    * Por ultimo si clicamos en una de las tarjetas de los detalles no aparecerá el vehiculo que hemos alquilado con sus datos
+  * Por ultimo si clicamos en una de las tarjetas de los detalles no aparecerá el vehiculo que hemos alquilado con sus datos
   ![img](./images/51.PNG)                 
 
 
