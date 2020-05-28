@@ -141,7 +141,7 @@ Se pretende crear una web de alquiler de coches en la cual los usuarios puede al
    ![img](./images/34.PNG)
 
   >En este componenete podemos introducir comentarios sobre el producto y puntuar sobre el
-  >lo unico que tenemos que hacer es escribir el comentario y si queremos pulsar la estrella que queramos y enviar
+  > , lo unico que tenemos que hacer es escribir el comentario y si queremos pulsar la estrella que queramos y enviar
 
     * Lo primero que hace este componente es cargar los comentarios por id de vehiculo
     ![img](./images/35.PNG)
@@ -159,29 +159,31 @@ Se pretende crear una web de alquiler de coches en la cual los usuarios puede al
     ![img](./images/40.PNG)
 
     * [ Privilegios ROOT ]: el usuario root al igual que los demas usuarios podra comentar y responder , pero también podra borrar comentarios
-    >si clickamos el boton rojo borraremos el comentario
+    >Si clickamos el boton rojo borraremos el comentario
+
     ![img](./images/41.PNG)
     ![img](./images/42.PNG)
 
 * Introducimos un buscador por marcas:
->Aqui introduciremos el nombre de la marca que queramos buscar y nos saldrá
+>Aquí introduciremos el nombre de la marca que queramos buscar y nos saldrá
   ![img](./images/43.PNG)
 
   >Por ejemplo si introducimos "honda" nos saldran los honda
   ![img](./images/44.PNG)
 
     * Creamos un localStorage con lo que pusimos en la busqueda y en el componente lista lo recogemos
-    ![img](./images/45.PNG)
+
+  ![img](./images/45.PNG)
 
     * Y con lo anterior hacemos una petición a la base de datos que recoja todos los coches con esa marca
-    ![img](./images/46.PNG)
+  ![img](./images/46.PNG)
 
 * Mejoramos el aspecto del carrito:
 >Ahora nos muestran datos como el coste total las fechas y se pueden eliminar de la cesta
-      ![img](./images/47.PNG)   
+  ![img](./images/47.PNG)   
 
     * Cuando no aparece ningun coche se ve esto:
-      ![img](./images/48.PNG)  
+  ![img](./images/48.PNG)  
 
 * Tenemos una nueva sección para el usuario logeado que nos mostrará todos nuestros pedidos:
 >Nos enseña la fecha del pedido junto con su id
@@ -189,10 +191,10 @@ Se pretende crear una web de alquiler de coches en la cual los usuarios puede al
 
     * Si clickamos en una tarjeta de pedidos nos enseñaran los detalles del pedido :
     >Nos enseñará la fecha inicial y final del alquiler mas el numero del pedido
-      ![img](./images/50.PNG)
+  ![img](./images/50.PNG)
 
     * Por ultimo si clicamos en una de las tarjetas de los detalles no aparecerá el vehiculo que hemos alquilado con sus datos
-      ![img](./images/51.PNG)                 
+  ![img](./images/51.PNG)                 
 
 
 
