@@ -1,6 +1,4 @@
-#map {
-    height: 480px;
-}
+
 
 .contact-title {
     margin-bottom: 20px;
@@ -14,22 +12,30 @@
 }
 
 .buton_send {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 10px;
-    width: 200px;
-    height: 50px;
-    border: 1px solid blueviolet;
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    color: blueviolet;
+    background: #fff;
+    color: #131313;
+    display: inline-block;
+    padding: 14px 44px;
+    font-family: "Muli", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    border: 0;
+    border: 1px solid #615CFD;
+    text-align: center;
+    color: #615CFD !important;
     text-transform: uppercase;
+    cursor: pointer;
+}
+
+.buton_send:hover {
+    background: #615CFD;
+    color: #fff !important;
+    border: 1px solid #615CFD;
+
 }
 
 .buton_send:focus {
-    background-color: blueviolet;
+    background-color: rgb(164, 93, 231)t;
     color: white;
 }
 
@@ -53,7 +59,9 @@
 .form-contact ::placeholder {
     font-weight: 300;
 }
-
+.form-group {
+  margin-bottom: 0; 
+}
 .media-body h3 {
     font-size: 16px;
     margin-bottom: 0;
@@ -66,8 +74,12 @@
 }
 
 .contact-info__icon {
-    margin-right: 20px;
-    max-width: 20px;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    margin-right: 25px;
+    max-width: 15px;
+    margin-bottom: 20px;
 }
 
 @media (max-width: 575.98px) {

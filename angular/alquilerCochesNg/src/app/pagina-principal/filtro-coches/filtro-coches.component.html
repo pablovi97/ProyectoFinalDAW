@@ -1,14 +1,14 @@
 <div class="container">
 
 
-    <div class="row mt-2">
+    <div class="row mt-2 bg-dark">
         <div class=" bg-dark col-4  col-lg-12">
 
 
-            <mat-form-field class="">
+            <mat-form-field >
                 <mat-label class=" pl-2 text-white" aria-label="selecciona la marca del coche">Marca de coche</mat-label>
                 <mat-select>
-                    <mat-option class="bg-dark text-white" *ngFor="let marca of marcas" [value]="marca.value">
+                    <mat-option class="bg-dark text-white" id='marca' *ngFor="let marca of marcas" [value]="marca.value">
                         {{marca.viewValue}}
                     </mat-option>
                 </mat-select>
@@ -23,7 +23,7 @@
 
         </div>
 
-        <div class="col-4 col-lg-12 bg-dark">
+        <div class="col-4 col-lg-12 ">
             <label for="" class="text-white">Potencia CV</label><br>
             <mat-slider thumbLabel id="potencia" aria-label="potencia del vehiculo" tickInterval="1" min="1" max="1000"></mat-slider>
 

@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./filtro-coches.component.scss']
 })
 export class FiltroCochesComponent implements OnInit {
+
+  //COMPONENTE QUE NO SE ESTA USANDO
   marcas: marca[] = [
     { value: 'Abarth', viewValue: 'Abarth' },
     { value: 'Honda', viewValue: 'honda' },
@@ -27,14 +29,17 @@ export class FiltroCochesComponent implements OnInit {
     { value: 'Renault ', viewValue: 'Renault ' },
     { value: 'Volkswagen ', viewValue: 'Volkswagen ' },
     { value: 'Mercedes ', viewValue: 'Mercedes ' },
-    
+
   ];
   constructor() { }
 
   ngOnInit(): void {
   }
-  filtrar(){
-    
+  filtrar() {
+    (<HTMLInputElement>document.getElementById('precio')).value;
+    (<HTMLInputElement>document.getElementById('potencia')).value;
+    (<HTMLInputElement>document.getElementById('marca')).value;
+   
   }
 }
 interface marca {

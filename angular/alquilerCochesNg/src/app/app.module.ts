@@ -28,6 +28,10 @@ import { CocheActualizarComponent } from './pagina-principal/coche-actualizar/co
 import { CrearComentariosComponent } from './pagina-secundaria/crear-comentarios/crear-comentarios.component';
 import { AboutComponent } from './components/about/about.component';
 import { FiltroCochesComponent } from './pagina-principal/filtro-coches/filtro-coches.component';
+import { UserZoneComponent } from './pagina-tercera/user-zone/user-zone.component';
+import { PaginaTerceraComponent } from './pagina-tercera/pagina-tercera.component';
+import { VerDetallesComponent } from './pagina-tercera/ver-detalles/ver-detalles.component';
+
 
 
 @NgModule({
@@ -45,7 +49,10 @@ import { FiltroCochesComponent } from './pagina-principal/filtro-coches/filtro-c
     CocheActualizarComponent,
     CrearComentariosComponent,
     AboutComponent,
-    FiltroCochesComponent
+    FiltroCochesComponent,
+    UserZoneComponent,
+    PaginaTerceraComponent,
+    VerDetallesComponent
 
 
   

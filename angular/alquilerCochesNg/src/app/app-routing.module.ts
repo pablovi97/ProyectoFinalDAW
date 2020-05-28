@@ -7,6 +7,8 @@ import { CarritoComponent } from '../app/components/carrito/carrito.component';
 import { PaginaPrincipalComponent } from './pagina-principal/pagina-principal.component';
 import { PaginaSecundariaComponent } from './pagina-secundaria/pagina-secundaria.component';
 import { AboutComponent } from './components/about/about.component';
+import { PaginaTerceraComponent } from './pagina-tercera/pagina-tercera.component';
+
 
 const routes: Routes = [
 
@@ -16,6 +18,7 @@ const routes: Routes = [
   { path: 'logout', component: LogoutComponent },
   { path: 'lista', component: PaginaPrincipalComponent },
   { path: 'detalles', component: PaginaSecundariaComponent },
+  { path: 'user', component: PaginaTerceraComponent },
   { path: 'about', component: AboutComponent },
   { path: '', redirectTo: '/lista', pathMatch: 'full' },
 

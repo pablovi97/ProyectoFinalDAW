@@ -19,6 +19,7 @@ export class CarritoComponent implements OnInit {
     this.recogerPedido();
   }
   recogerPedido() {
+    //recogemos los pedidos del session storage 
     if (sessionStorage.getItem('pedido')) {
       this.pedido = JSON.parse(sessionStorage.getItem('pedido'));
       console.log(this.pedido);
@@ -59,7 +60,7 @@ export class CarritoComponent implements OnInit {
       this._router.navigate(['login']);
     }
   }
-
+//Subimos el array de detalles pedidos
   subirDetallesPedido() {
     //aqui usamos el pedido de la sesión porque contiene el array de detalle
     console.log(this.pedido);

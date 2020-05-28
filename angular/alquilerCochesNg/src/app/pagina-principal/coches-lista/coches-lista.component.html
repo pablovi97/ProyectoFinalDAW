@@ -2,7 +2,7 @@
   <ng-container *ngIf="rol == 'admin' ; then exist">
   </ng-container>
   <ng-template #exist>
-    <div class="col-12">
+    <div class="col-12 create">
 
       <form [formGroup]="newForm">
         <mat-horizontal-stepper linear>
@@ -22,14 +22,21 @@
 
           </mat-step>
           <mat-step [stepControl]="newFormGroup">
-
+          
             <ng-template matStepLabel aria-label="marca del vehiculo">Marca</ng-template>
-            <div class="form-group">
+            <!--<div class="form-group">
 
               <input type="text" formControlName="marca" id="marca" aria-label="marca del vehiculo" class="form-control" required>
               <label for="marca">Marca del vehiculo</label>
-            </div>
-
+            </div>-->
+            <mat-form-field>
+              <mat-label>Selecciona la marca</mat-label>
+              <mat-select formControlName="marca" required>
+                <mat-option *ngFor="let carr of marcas" [value]="carr.value">
+                  {{carr.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
           </mat-step>
 
           <mat-step [stepControl]="newFormGroup">
@@ -134,9 +141,10 @@
       </form>
     </div>
   </ng-template>
-  <div class="col-12 col-md-6 col-lg-4 col-xl-3 py-3"  *ngFor="let coche of coches">
 
-    <mat-card class="card bg-dark text-white" [class.select]="coche == selectedCoche" *ngIf="coche.stockModelo != 0">
+ <div class="col-12 col-md-6 col-lg-4 col-xl-3 py-3"  *ngFor="let coche of coches">
+
+    <mat-card class="card bg-dark text-white" [class.select]="coche == selectedCoche"  *ngIf="coche.stockModelo != 0">
       <div class="container" (click)="onSelect(coche)">
         <mat-card-header>
           <div mat-card-avatar class="example-header-image"></div>
@@ -145,7 +153,6 @@
         </mat-card-header>
 
         <img mat-card-image src="assets/images/{{coche.marca}}.jpg" alt="Photo of {{coche.marca}}" style="width:100%;">
-        <!--<img mat-card-image src="data:image/jpg;base64,base64_encode({{coche.imagen}})" alt="Photo of {{coche.marca}}" style="width:100%;">-->
         <mat-card-content class="py-2">
           <strong>KM:</strong> <span class="badge badge-secondary">{{coche.km}} mil</span><br>
           <strong>CV:</strong> <span class="badge badge-secondary"> {{coche.CV}}</span>
@@ -157,11 +164,11 @@
       </ng-container>
       <ng-template #existe>
         <mat-card-actions style="text-align:center">
-          <div class="btn-group" role="group" aria-label="Basic example">
+          <div class="btn-group" role="group" aria-label="editar vehiculo">
             <button mat-raised-button type="button" class="btn btn-sm btn-outline-warning"
               (click)="onEdit(coche)">Editar</button>
             <button mat-stroked-button type="button" class="btn btn-sm btn-outline-danger"
-              (click)="onDelete(coche)">Eliminar</button>
+              (click)="onDelete(coche)" aria-label="eliminar vehiculo">Eliminar</button>
           </div>
         </mat-card-actions>
       </ng-template>

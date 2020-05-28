@@ -27,8 +27,9 @@ export class MainNavComponent implements OnInit {
     this.numeroDetalle = ped.detallesPedidos.length;
     console.log(this.numeroDetalle);
   }
-
-
+  userZone(){
+    this.router.navigate(['user']);
+  }
   verCarrito() {
     this.router.navigate(['carrito']);
   }
@@ -39,7 +40,7 @@ export class MainNavComponent implements OnInit {
     console.log(window.location.pathname)
     if (window.location.pathname == '/lista') {
       location.reload();
-    }else{
+    } else {
       this.router.navigate(['lista']);
     }
 

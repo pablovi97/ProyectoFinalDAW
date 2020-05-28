@@ -1,0 +1,50 @@
+.container {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.title {
+    margin-bottom: 20px;
+    font-size: 27px;
+    font-weight: 600;
+}
+
+.content {
+    text-align: center;
+    height: 800px;
+    overflow-y: scroll;
+}
+
+.details{
+    height: 400px;
+    overflow-y: scroll;
+}
+.texto{
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+}
+.card-content {
+    background-color: darken($color:   rgb(39, 37, 37), $amount: 0);
+    margin-bottom: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 6px 6px 20px #666;   
+
+    .idpedido {
+        color: white;
+        font-size: 20px;
+        font-weight: 500;
+
+    }
+    .fechapedido{
+        color: white;
+        font-size: 20px;
+        font-weight: 500;
+        margin-right: 10px;
+    }
+    &:hover{
+        background-color: saturate($color: #000000, $amount: 0);
+        box-shadow: 0px 0px 0px #666;   
+    }
+}

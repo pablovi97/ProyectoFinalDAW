@@ -93,10 +93,13 @@
                   
                         <p>{{com.contenido}}</p>
                         <p>{{com.puntuacion}}<i class="fas fa-star colorestrella "></i></p>
+                   
                     </li>
                 </div>
 
                 <button class="btn btn-outline-warning" (click)="responderComentario(coment)"><i class="fas fa-angle-double-right"></i></button>
+                <button *ngIf="rol == 'admin'" class="btn btn-outline-danger" (click)="eliminarComentario(coment)"><i class="fas fa-times"></i></button>
+               
 
             </ul>
         </div>

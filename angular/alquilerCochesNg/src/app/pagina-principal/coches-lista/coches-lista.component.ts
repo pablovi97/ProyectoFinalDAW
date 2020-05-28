@@ -23,11 +23,7 @@ export class CochesListaComponent implements OnInit {
   usuario: Usuario | null;
   rol: string | null;
 
-
-
-
-
-
+//Creamos un array para mostrarlo en el matselect y que se vea bien
   carroceria: Carr[] = [
     { value: 'coupe', viewValue: 'Coupe' },
     { value: 'berlina', viewValue: 'Berlina' },
@@ -37,7 +33,29 @@ export class CochesListaComponent implements OnInit {
     { value: '4x4suv', viewValue: '4x4 SUV' },
     { value: 'pick up', viewValue: 'Pick Up' },
   ];
+  marcas: Carr[] = [
+    { value: 'Abarth', viewValue: 'Abarth' },
+    { value: 'Honda', viewValue: 'honda' },
+    { value: 'Toyota', viewValue: 'Toyota' },
+    { value: 'Nissan', viewValue: 'Nissan' },
+    { value: 'Mazda', viewValue: 'Mazda' },
+    { value: 'Audi', viewValue: 'Audi' },
+    { value: 'Ford', viewValue: 'Ford' },
+    { value: 'Subaru', viewValue: 'Subaru' },
+    { value: 'BMW', viewValue: 'BMW' },
+    { value: 'Seat', viewValue: 'Seat' },
+    { value: 'Suzuki', viewValue: 'Suzuki' },
+    { value: 'Lamborghini', viewValue: 'Lamborghini' },
+    { value: 'Citroen ', viewValue: 'Citroen ' },
+    { value: 'Alfa ', viewValue: 'Alfa ' },
+    { value: 'Kia ', viewValue: 'Kia ' },
+    { value: 'Mitsubishi ', viewValue: 'Mitsubishi ' },
+    { value: 'Kia ', viewValue: 'Kia ' },
+    { value: 'Renault ', viewValue: 'Renault ' },
+    { value: 'Volkswagen ', viewValue: 'Volkswagen ' },
+    { value: 'Mercedes ', viewValue: 'Mercedes ' },
 
+  ];
   @Output() newStu = new EventEmitter();
   newForm: FormGroup = this.newFormGroup();
 
@@ -80,7 +98,8 @@ export class CochesListaComponent implements OnInit {
     scope._apiService.deleteCoche(coche.idCoche).subscribe();
     location.reload();
   }
-
+  //Obtienes todos los coches , si la busqueda no es null quiere decir que has escrito algo en 'Search'
+  //y se hará una consulta con lo que se ha escrito
   getCoches(): void {
     console.log('Entra en el metodo!')
     const scope = this;
@@ -104,6 +123,7 @@ export class CochesListaComponent implements OnInit {
     this.getlogeado();
   }
 
+  //Verifica si hay algun usuario logeado y nos quedamos con su rol
   getlogeado() {
     if (sessionStorage.getItem('usuario')) {
       this.usuario = JSON.parse(sessionStorage.getItem('usuario'));
@@ -119,26 +139,30 @@ export class CochesListaComponent implements OnInit {
 
   }
 
+  //Creamos un nuevo coche
   onCreate() {
+    try {
+      var tipoCarroceria = this.newForm.get('carroceria').value;
+      var marca = this.newForm.get('marca').value;
+      var stockModelo: number = +this.newForm.get('stock').value;
+      var km: number = +this.newForm.get('km').value;
+      var motor = this.newForm.get('motor').value;
+      var anio: number = +this.newForm.get('anio').value;
+      var precio: number = +this.newForm.get('precio').value;
+      var cv: number = +this.newForm.get('CV').value;
+      var plazas: number = +this.newForm.get('plazas').value;
+      var modelo = this.newForm.get('modelo').value;;
+      var imagen = (<HTMLInputElement>document.getElementById('imagen')).value;
 
 
-    var tipoCarroceria = this.newForm.get('carroceria').value;
+      this._apiService.introducirCoche(tipoCarroceria, marca, stockModelo, km, motor, anio
+        , precio, cv, plazas, modelo, imagen).subscribe();
+
+    } catch (error) {
+      console.log(error)
+    }
 
 
-    var marca = this.newForm.get('marca').value;
-    var stockModelo = +this.newForm.get('stock').value;
-    var km = +this.newForm.get('km').value;
-    var motor = this.newForm.get('motor').value;
-    var anio = +this.newForm.get('anio').value;
-    var precio = +this.newForm.get('precio').value;
-    var cv = +this.newForm.get('CV').value;
-    var plazas = +this.newForm.get('plazas').value;
-    var modelo = this.newForm.get('modelo').value;;
-    var imagen = (<HTMLInputElement>document.getElementById('imagen')).value;
-
-
-    this._apiService.introducirCoche(tipoCarroceria, marca, stockModelo, km, motor, anio
-      , precio, cv, plazas, modelo, imagen).subscribe();
 
   }
 

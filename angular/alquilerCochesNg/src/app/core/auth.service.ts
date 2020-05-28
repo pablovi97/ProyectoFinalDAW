@@ -12,12 +12,14 @@ export class Auth {
     private token: any;
     private user: any;
     private _cocheApiUrl = '/api/';
+    //Creamos el header
     constructor(private htttp: HttpClient) {}
     headers: HttpHeaders = new HttpHeaders({
       "Content-Type": "application/json"
     });
-
+//Metodo de login
     login(name: string, pass: string): Observable<any> {
+      //Introducimos el nombre y la contraseña y devuelve el usuario con su token
         const url_api = this._cocheApiUrl+"login";
         return this.htttp
           .post(
@@ -27,8 +29,9 @@ export class Auth {
           )
           .pipe(map(data => data));
       }
-
+//Metodo para registrar el usuario 
   register(nom: string, em: string, pass: string) {
+    //Introducimos el nombre ,email ,contraseña
     const url_api = this._cocheApiUrl+"register";
     return this.htttp
       .post(
@@ -42,8 +45,8 @@ export class Auth {
       )
       .pipe(map(data => data));
   }
-//Nuevo
 
+//Metodo para guardar en la sesion el usuario
   guardarSesion(user: Usuario) {
 
     sessionStorage.setItem('usuario', JSON.stringify({

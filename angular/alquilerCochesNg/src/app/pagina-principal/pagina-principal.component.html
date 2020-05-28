@@ -1,33 +1,33 @@
 <div class="container-fluid">
     <div class="row">
 
-        <ng-container *ngIf="rol == 'admin' ; then exist ;else noexiste">
+       <ng-container *ngIf="rol == 'admin' ; then exist ;else noexiste">
         </ng-container>
         <ng-template #exist>
-            <div class="col-12 col-lg-2">
+    <!--<div class="col-12 col-lg-2">
                 <app-filtro-coches></app-filtro-coches>
-            </div>
+            </div>-->
             <div class="col-12 col-lg-8">
                 <app-coches-lista #lista></app-coches-lista>
 
             </div>
 
-            <div class="col-12 col-lg-2">
+            <div class="col-12 col-lg-2" >
 
                 <app-coche-actualizar *ngIf="lista.editCoche" [cocheEdit]="lista.editCoche"></app-coche-actualizar>
             </div>
 
         </ng-template>
         <ng-template #noexiste>
-            <div class="col-lg-2 col-12 ">
+            <!--<div class="col-12 col-lg-2  ">
                 <app-filtro-coches></app-filtro-coches>
-            </div>
-            <div class="col-lg-10 col-12  ">
+            </div>-->
+            <div class="col-12    ">
                 <app-coches-lista></app-coches-lista>
 
             </div>
 
         </ng-template>
+        </div>
+        </div>
 
-    </div>
-</div>

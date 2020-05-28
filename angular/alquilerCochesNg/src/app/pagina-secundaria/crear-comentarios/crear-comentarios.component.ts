@@ -14,6 +14,7 @@ export class CrearComentariosComponent implements OnInit {
   comentarios: Comentario[];
   coches: Coche;
   //subscription: Subscription;
+  rol: string;
   usuario: Usuario;
   cincostarts: number;
   tresstarts: number;
@@ -24,15 +25,17 @@ export class CrearComentariosComponent implements OnInit {
 
   ngOnInit(): void {
     this.getComentarios();
+    if (sessionStorage.getItem('usuario')) {
+      this.usuario = JSON.parse(sessionStorage.getItem('usuario'));
+      this.rol = this.usuario.rol
+    }
 
   }
+  //Obtenemos los comentarios
   getComentarios() {
     const scope = this;
     this.coches = JSON.parse(localStorage.getItem('coche'));
 
-
-
-    //getComentarioIdCoche devuelve Observable<Comentario[]> 
     scope._apiService.getComentarioIdCoche(this.coches.idCoche).subscribe(
       data => this.comentarios = data,
       error => console.log(error)
@@ -46,9 +49,10 @@ export class CrearComentariosComponent implements OnInit {
 
   rating() {
 
-  var arrayComentario : Comentario;
+    var arrayComentario: Comentario;
 
-  arrayComentario = JSON.parse(localStorage.getItem('comentario'))
+    arrayComentario = JSON.parse(localStorage.getItem('comentario'))
+   
 
   }
   subirComentario(pregunta: number | null) {
@@ -81,6 +85,11 @@ export class CrearComentariosComponent implements OnInit {
     this.subirComentario(comentario.idComentario);
 
 
+  }
+  eliminarComentario(comentario: Comentario) {
+    this._apiService.deleteComentario(comentario.idComentario).subscribe();
+    location.reload();
+   
   }
 
 }

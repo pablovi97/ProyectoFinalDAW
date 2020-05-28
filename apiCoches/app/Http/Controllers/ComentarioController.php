@@ -13,7 +13,7 @@ class ComentarioController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:api')->except(['index','show']);
+        $this->middleware('auth:api')->except(['index', 'show']);
     }
     /**
      * Display a listing of the resource.
@@ -33,7 +33,7 @@ class ComentarioController extends Controller
             $parametroValue = $request->input('fkCocheCm');
             $ComentariosFiltrados = Comentario::where('fkCocheCm', 'like', $parametroValue)->get();
             return $ComentariosFiltrados;
-        } 
+        }
         if ($request->input('fkUsuarioCm') != null) {
             $parametroValue = $request->input('fkUsuarioCm');
             $ComentariosFiltrados = Comentario::where('fkUsuarioCm', 'like', $parametroValue)->get();
@@ -62,17 +62,17 @@ class ComentarioController extends Controller
     //POST
     public function store(Request $request)
     {
-       
+
         $Comentario = Comentario::create([
             'contenido' =>  $request->contenido,
             'fkUsuarioCm' => $request->fkUsuarioCm,
             'fkCocheCm' => $request->fkCocheCm,
             'puntuacion' => $request->puntuacion,
             'pregunta' => $request->pregunta,
-            ]);
+        ]);
 
 
-            return new ComentarioResource($Comentario);
+        return new ComentarioResource($Comentario);
     }
 
     /**
@@ -93,7 +93,7 @@ class ComentarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Comentario  $Comentario
      * @return \Illuminate\Http\Response
-     */
+     */ 
     //PUT
     public function update(Request $request, Comentario $Comentario)
     {/*
@@ -116,12 +116,10 @@ class ComentarioController extends Controller
      * @return \Illuminate\Http\Response
      */
     //DELETE
-    public function destroy(Comentario $Comentario)
+    public function destroy($id)
     {
-
-        $Comentario->delete();
-
-
+        $Comentario = Comentario::find($id);
+        $Comentario->delete('cascade');
         return response()->json(null, 204);
     }
 }

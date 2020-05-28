@@ -1,0 +1,62 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 title">
+
+            Wellcome {{nombreuser}}!
+        </div>
+        <div class="col-12" *ngIf="coche">
+            <div class="row">
+                <div class="col-6">
+                    <img class="img-fluid" src="assets/images/{{coche.marca}}.jpg" alt="">
+                </div>
+                <div class="col-6">
+                    <h1>
+                        {{coche.marca}} {{coche.modelo}}
+                    </h1>
+                    <p>Precio: {{coche.precio}}/dia</p>
+                    <p>Año: {{coche.anio}}</p>
+                    <p>KM: {{coche.km}}</p>
+                    <p>CV: {{coche.CV}}</p>
+                    <p>Plazas: {{coche.plazas}}</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-4 mt-5 mr-1 content">
+            <h1>PEDIDOS</h1>
+            <div (click)="verDetalle(ped)" class="row card-content" *ngFor="let ped of pedidos">
+                <div class=" col-4 idpedido">
+                    {{ped.idPedido}}
+                </div>
+                <div class="col-4 fechapedido">
+                    {{ped.fechaPed}}
+                </div>
+                <div class="col-4 text-white ">
+                    <i class="fas fa-car fa-2x"></i>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col-6 details mt-5" *ngIf="detallePedidos">
+            <h1>DETALLES</h1>
+            <div (click)="verCoche(det)" class="row card-content" *ngFor="let det of detallePedidos">
+
+                <div class="texto mr-2">
+                    Pedido: {{det.fkPedido}}
+                </div>
+                <div class=" texto mr-2 ">
+                    Fecha: {{det.fechaIniRent}}/ {{det.fechaFinRent}}
+                </div>
+                <div class=" texto ">
+                    Coche: {{det.fkCoche}}
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -18,11 +18,18 @@
         El nombre debe tener al menos 3 caracteres
     </div>
 </div>-->
-
+<div class="actualizar">
 
 
 <label>STOCK :
     <input [(ngModel)]="cocheEdit.stockModelo" aria-label="stock del vehiculo" type="text" placeholder="stockModelo">
+</label>
+    
+<label>Modelo :
+    <input [(ngModel)]="cocheEdit.modelo" aria-label="modelo del vehiculo" type="text" placeholder="Modelo">
+</label>
+<label>Marca :
+    <input [(ngModel)]="cocheEdit.marca" aria-label="marca del vehiculo" type="text" placeholder="Marca">
 </label>
     
 <label>KM:
@@ -43,3 +50,4 @@
 </label>
     <br>
 <button (click)="subirActualizacion()" class="btn btn-outline-success" aria-label="subir actualización">Update</button>
+</div>

@@ -22,7 +22,7 @@
     transition: 0.3s;
     
     }
-  //Prueba
+
 
   .form-group {
     width: 300px;
@@ -61,3 +61,13 @@ label {
     font-size: 14px;
     color: purple;
 }
+
+@media (min-width: 300px) and (max-width: 1000px) { 
+
+  .create{
+    visibility: hidden;
+    position: absolute;
+  }
+}
+
+

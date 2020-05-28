@@ -3,17 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Coche;
+use App\Detallepedido;
 use App\Http\Middleware\RolAdmin;
 use Illuminate\Http\Request;
 use App\Http\Resources\CocheResource;
+use App\Pedido;
 
 class CocheController extends Controller
 {
     public function __construct()
     {
- $this->middleware('auth:api')->except(['index','show']);
- $this->middleware('roladmin')->except(['index','show' ,'update']);
- 
+        $this->middleware('auth:api')->except(['index', 'show']);
+        $this->middleware('roladmin')->except(['index', 'show', 'update']);
     }
     /**
      * Display a listing of the resource.
@@ -66,14 +67,16 @@ class CocheController extends Controller
             $parametroValue = $request->input('modelo');
             $cochesFiltrados = Coche::where('modelo', 'like', $parametroValue)->get();
             return $cochesFiltrados;
-        }  if ($request->input('imagen') != null) {
+        }
+        if ($request->input('imagen') != null) {
             $parametroValue = $request->input('imagen');
             $cochesFiltrados = Coche::where('imagen', 'like', $parametroValue)->get();
             return $cochesFiltrados;
         }
-       
-       
-        return CocheResource::collection(Coche::all());
+
+
+       return CocheResource::collection(Coche::all());
+
     }
 
     /**
@@ -84,7 +87,7 @@ class CocheController extends Controller
      */
     public function store(Request $request)
     {
-  
+
         $coche = Coche::create([
             'marca' =>  $request->marca,
             'modelo' =>  $request->modelo,
@@ -97,12 +100,11 @@ class CocheController extends Controller
             'plazas' => $request->plazas,
             'precio' => $request->precio,
             'imagen' => $request->imagen
-            
-            ]);
+
+        ]);
 
 
-            return new CocheResource($coche);
-        
+        return new CocheResource($coche);
     }
 
     /**
@@ -113,16 +115,15 @@ class CocheController extends Controller
      */
     public function show($id)
     {
-        $coche=Coche::find($id);
+        $coche = Coche::find($id);
         //return new CocheResource($coche);
 
-        if (!$coche)
-		{
-			// Se devuelve un array errors con los errores encontrados y cabecera HTTP 404.
-			// En code podríamos indicar un código de error personalizado de nuestra aplicación si lo deseamos.
-			return response()->json(['errors'=>array(['code'=>404,'message'=>'No se encuentra un coche con ese código.'])],404);
-		}
-        return response()->json(['status'=>'ok','data'=>$coche ],200);
+        if (!$coche) {
+            // Se devuelve un array errors con los errores encontrados y cabecera HTTP 404.
+            // En code podríamos indicar un código de error personalizado de nuestra aplicación si lo deseamos.
+            return response()->json(['errors' => array(['code' => 404, 'message' => 'No se encuentra un coche con ese código.'])], 404);
+        }
+        return response()->json(['status' => 'ok', 'data' => $coche], 200);
     }
 
     /**
@@ -134,7 +135,7 @@ class CocheController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $coche=Coche::find($id);
+        $coche = Coche::find($id);
         $coche->marca = $request->marca ?? $coche->marca;
         $coche->modelo = $request->modelo ?? $coche->modelo;
         $coche->motor = $request->motor ?? $coche->motor;
@@ -147,7 +148,7 @@ class CocheController extends Controller
         $coche->tipoCarroceria = $request->tipoCarroceria ?? $coche->tipoCarroceria;
         $coche->imagen = $request->imagen ?? $coche->imagen;
         $coche->save();
-    
+
         return new cocheResource($coche);
     }
 
@@ -158,8 +159,9 @@ class CocheController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {  $coche=Coche::find($id);
-        $coche->delete();
+    {
+        $coche = Coche::find($id);
+        $coche->delete('cascade');
         return response()->json(null, 204);
     }
 }

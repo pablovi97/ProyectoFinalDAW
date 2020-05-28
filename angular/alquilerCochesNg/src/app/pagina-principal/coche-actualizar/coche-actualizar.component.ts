@@ -14,7 +14,7 @@ export class CocheActualizarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
+//Recogemos el objeto modificado y lo subimos para actualizarlo
   subirActualizacion():void{
     this._apiService.actualizarCoche(this.cocheEdit)
     .subscribe(error => console.log(error));

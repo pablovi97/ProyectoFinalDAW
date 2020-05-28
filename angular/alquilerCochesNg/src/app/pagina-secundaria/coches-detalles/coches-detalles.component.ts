@@ -22,11 +22,7 @@ export class CochesDetallesComponent implements OnInit {
   getCoche(): void {
     this.coche = JSON.parse(localStorage.getItem('coche'));
   }
-  //Cogemos los comentarios de la base de datos
-  getComentario(): void {
-
-  }
-
+  
   alquilar(coche: Coche): void {
 
     var dc = new Detallepedido();
@@ -40,7 +36,7 @@ export class CochesDetallesComponent implements OnInit {
     } else if (new Date(dc.fechaIniRent) === new Date(dc.fechaFinRent)) {
       (<HTMLInputElement>document.getElementById('errorfecha')).innerText = "introduce al menos un dia de diferencia";
       this._router.navigate(['detalles']);
-    } else{
+    } else {
 
       dc.fkCoche = coche.idCoche;
       dc.cocheped = coche;
@@ -48,7 +44,7 @@ export class CochesDetallesComponent implements OnInit {
       var fecha1 = new Date(dc.fechaIniRent).getTime();
       var fecha2 = new Date(dc.fechaFinRent).getTime();
       var diff = fecha1 - fecha2;
-      dc.precioTotal =Math.abs( (dc.cantidad * coche.precio) * (diff / (1000 * 60 * 60 * 24)));
+      dc.precioTotal = Math.abs((dc.cantidad * coche.precio) * (diff / (1000 * 60 * 60 * 24)));
 
       dc.nombreVehiculo = coche.marca;
       var pedido = JSON.parse(sessionStorage.getItem('pedido'));
@@ -66,7 +62,8 @@ export class CochesDetallesComponent implements OnInit {
               var fecha1 = new Date(dc.fechaIniRent).getTime();
               var fecha2 = new Date(dc.fechaFinRent).getTime();
               var diff = fecha1 - fecha2;
-              dc.precioTotal =Math.abs( (dc.cantidad * coche.precio) * (diff / (1000 * 60 * 60 * 24)));
+              //el precio total la cantidad de dias por el precioy numero de coches
+              dc.precioTotal = Math.abs((dc.cantidad * coche.precio) * (diff / (1000 * 60 * 60 * 24)));
               bool = true;
             }
 
@@ -78,11 +75,13 @@ export class CochesDetallesComponent implements OnInit {
       }
       if (bool == false) {
         console.log(pedido);
-
+        //Metemos el detalle pedido dentro del array detallePedidos en el objeto Pedidos
         pedido.detallesPedidos.push(dc);
       }
+      //Subimos el pedido al session storage
       let pedidoJSON = JSON.stringify(pedido);
       sessionStorage.setItem('pedido', pedidoJSON);
+      //Esto lo hacemos para saber de que pagina venimos
       localStorage.setItem('detalles', 'detalles');
       this._router.navigate(['carrito']);
     }

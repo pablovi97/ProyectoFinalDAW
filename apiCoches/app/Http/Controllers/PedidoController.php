@@ -10,7 +10,6 @@ class PedidoController extends Controller
 
     public function __construct()
     {
-      //$this->middleware('auth:api')->except(['index', 'show']);
       $this->middleware('auth:api');
     }
     /**
@@ -55,15 +54,18 @@ class PedidoController extends Controller
      * @param  \App\Pedido  $pedido
      * @return \Illuminate\Http\Response
      */
-    public function show(Pedido $pedido)
+    public function show($id)
     {
 
-        //MODIFICADO
-        //if (auth()->user()->idUsuario == $pedido->fkUsuario) {
-            return new PedidoResource($pedido);
-  //  }else {
-    // return response()->json(['error' => 'You can only edit your own orders.'], 403);
-  // }
+        $pedido = Pedido::find($id);
+        //return new pedidoResource($pedido);
+
+        if (!$pedido) {
+            // Se devuelve un array errors con los errores encontrados y cabecera HTTP 404.
+            // En code podríamos indicar un código de error personalizado de nuestra aplicación si lo deseamos.
+            return response()->json(['errors' => array(['code' => 404, 'message' => 'No se encuentra un pedido con ese código.'])], 404);
+        }
+        return response()->json(['status' => 'ok', 'data' => $pedido], 200);
  
     }
 

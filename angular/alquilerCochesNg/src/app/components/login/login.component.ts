@@ -14,14 +14,15 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+//Introducimos usuario , contraseña para logearnos y recogemos el token 
+// y el usuario para guardarlos
   loginUserPass(user: string, pass: string): void {
     this._authService.login(user, pass)
       .subscribe(
         data => {
           console.log(data.access_token); this.guardarSesion(data.user)
           this.guardatToken(data.access_token);
-          this._location.back();
+          this._location.back();//volvemos a la pagina anterior
         },
         error => console.log(error)
       );
@@ -30,12 +31,13 @@ export class LoginComponent implements OnInit {
   }
 
   guardatToken(token: string) {
+    //Guardamos el token que recogemos cuando nos logeamos
     localStorage.setItem('token', token);
 
   }
 
   guardarSesion(user: Usuario) {
-
+//Guardamos el usuario en la sesion
     sessionStorage.setItem('usuario', JSON.stringify({
       'id': user.idUsuario,
       'name': user.name,

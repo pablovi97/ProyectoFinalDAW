@@ -45,6 +45,7 @@
       <button class="btn btn-dark my-2 my-sm-0" (click)=busqueda(); type="submit"><i class="fas fa-search"></i></button>
       <button type="button" class="btn btn-dark" (click)=verCarrito()><span class="badge badge-light">{{numeroDetalle}}</span><i class="fas fa-shopping-cart"></i>
       </button>
+      <button *ngIf="usuario" class="btn btn-dark" type="button" (click)=userZone()  ><i class="fas fa-user"></i></button>
      
     </form>
     

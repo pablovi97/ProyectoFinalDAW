@@ -10,6 +10,8 @@ export class LogoutComponent implements OnInit {
   constructor(private _router: Router) { }
 
   ngOnInit(): void {
+
+    //Borramos todas las sesiones guardadas del usuario y su token y volvemos a /lista
     sessionStorage.removeItem('usuario');
 
     if (sessionStorage.getItem('pedido')) {
@@ -22,7 +24,7 @@ export class LogoutComponent implements OnInit {
       localStorage.removeItem('token')
     }
     localStorage.setItem('logout', 'logout');
-    this._router.navigate(["/lista"]);
+    this._router.navigate(["/lista"]);//Pagina principal
   }
 
 }
