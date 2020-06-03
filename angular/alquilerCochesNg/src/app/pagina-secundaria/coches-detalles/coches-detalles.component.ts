@@ -12,19 +12,26 @@ import { Comentario } from 'src/app/shared/models/comentario.model';
 export class CochesDetallesComponent implements OnInit {
   coche: Coche | null;
   comentario: Comentario | null;
-
+ // fechaActual: string;
   constructor(private _router: Router) { }
 
   ngOnInit(): void {
     this.getCoche();
   }
-
+  
+//Obtenemos la fecha actual para verlo en el date
+  /*getFechaActual(): void {
+    let fecha = new Date();
+    let dia = fecha.getDate().toString();
+    let mes = (fecha.getMonth() + 1).toString();
+    let anio = fecha.getFullYear().toString();
+    this.fechaActual = anio + "-" + mes + "-" + dia;
+  }*/
   getCoche(): void {
     this.coche = JSON.parse(localStorage.getItem('coche'));
   }
-  
-  alquilar(coche: Coche): void {
 
+  alquilar(coche: Coche): void {
     var dc = new Detallepedido();
     dc.fechaIniRent = (<HTMLInputElement>document.getElementById('fechaMin')).value;
     dc.fechaFinRent = (<HTMLInputElement>document.getElementById('fechaMax')).value;
@@ -37,7 +44,6 @@ export class CochesDetallesComponent implements OnInit {
       (<HTMLInputElement>document.getElementById('errorfecha')).innerText = "introduce al menos un dia de diferencia";
       this._router.navigate(['detalles']);
     } else {
-
       dc.fkCoche = coche.idCoche;
       dc.cocheped = coche;
       dc.cantidad = + (<HTMLInputElement>document.getElementById('cantidad')).value;
@@ -45,13 +51,11 @@ export class CochesDetallesComponent implements OnInit {
       var fecha2 = new Date(dc.fechaFinRent).getTime();
       var diff = fecha1 - fecha2;
       dc.precioTotal = Math.abs((dc.cantidad * coche.precio) * (diff / (1000 * 60 * 60 * 24)));
-
       dc.nombreVehiculo = coche.marca;
       var pedido = JSON.parse(sessionStorage.getItem('pedido'));
       var bool: boolean = false;
       //Verificamos si hay alguna sesion de pedido creado , en caso de si usamos esa por lo contrario creamos una nueva
       if (sessionStorage.getItem('pedido') != null) {
-
         var detalle = pedido.detallesPedidos;
         for (let obj of detalle) {
           //Si es el mismo coche (que se comparan con su id) se suma la cantidad
@@ -66,7 +70,6 @@ export class CochesDetallesComponent implements OnInit {
               dc.precioTotal = Math.abs((dc.cantidad * coche.precio) * (diff / (1000 * 60 * 60 * 24)));
               bool = true;
             }
-
           }
         }
       } else {
@@ -85,10 +88,5 @@ export class CochesDetallesComponent implements OnInit {
       localStorage.setItem('detalles', 'detalles');
       this._router.navigate(['carrito']);
     }
-
-  }
-
-  reservar(coche: Coche): void {
-
   }
 }

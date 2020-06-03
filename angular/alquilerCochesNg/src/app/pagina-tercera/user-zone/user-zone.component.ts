@@ -22,10 +22,8 @@ export class UserZoneComponent implements OnInit {
   constructor(private _apiService: ApiService) { }
 
   ngOnInit(): void {
-
     this.getlogeado();
     this.getPedidos();
-
   }
 
   //Recogemos los pedidos del usuario
@@ -33,32 +31,31 @@ export class UserZoneComponent implements OnInit {
     this._apiService.getPedidosbyUser(this.usuario.id).subscribe(
 
       data => this.pedidos = data, error => console.log(error)
-
     )
   }
+
   //Verifica si hay algun usuario logeado y nos quedamos con su nombre
   getlogeado() {
     if (sessionStorage.getItem('usuario')) {
       this.usuario = JSON.parse(sessionStorage.getItem('usuario'));
       this.nombreuser = this.usuario.name;
-
     }
-
   }
-  //Cuando clickamos un pedido y recogemos su array de detalles
+
+  //Cuando clickamos un pedido y recogemos su array de detalles de la api
   verDetalle(pedido: Pedido) {
     this._apiService.getDetallePedidoByPedido(pedido.idPedido).subscribe(
       data => this.detallePedidos = data, error => console.log(error)
     );
     console.log(this.detallePedidos);
   }
-//Cuando clickamos un detalle vemos el vehiculo con sus datos
+
+//Cuando clickamos un detalle vemos el vehiculo con sus datos recogidos de la api
   verCoche(detallepedido: Detallepedido) {
     console.log('verCoche')
     const scope = this ;
     console.log(detallepedido.fkCoche);
     this._apiService.getCocheId(detallepedido.fkCoche).subscribe(
-
       {
         next(cochesObserv) { localStorage.setItem( 'cocheselected' ,JSON.stringify( cochesObserv)) }
       }
@@ -68,6 +65,7 @@ export class UserZoneComponent implements OnInit {
    this.marca = scope.coche.marca;
   }
 }
+
 interface Usuario {
   id: number,
   name: string,

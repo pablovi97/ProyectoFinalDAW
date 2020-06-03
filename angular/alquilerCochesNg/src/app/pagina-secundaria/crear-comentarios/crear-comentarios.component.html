@@ -1,108 +1,97 @@
-<h1>COMENTARIOS</h1>
+<h1>Rating</h1>
 <div class="container">
-
-
-
-    <div class="row">
-
-<!--PRUEBA-->
-<div class="side">
-    <div>5 star</div>
-  </div>
-  <div class="middle">
-    <div class="bar-container">
-      <div class="bar-5"></div>
+  <div class="row">
+    <div class="side">
+      <div>5 star</div>
     </div>
-  </div>
-  <div class="side right">
-    <div>150</div>
-  </div>
-  <div class="side">
-    <div>4 star</div>
-  </div>
-  <div class="middle">
-    <div class="bar-container">
-      <div class="bar-4"></div>
+    <div class="middle">
+      <div class="bar-container">
+        <div class="bar-5"></div>
+      </div>
     </div>
-  </div>
-  <div class="side right">
-    <div>63</div>
-  </div>
-  <div class="side">
-    <div>3 star</div>
-  </div>
-  <div class="middle">
-    <div class="bar-container">
-      <div class="bar-3"></div>
+    <div class="side right">
+      <div>150</div>
     </div>
-  </div>
-  <div class="side right">
-    <div>15</div>
-  </div>
-  <div class="side">
-    <div>2 star</div>
-  </div>
-  <div class="middle">
-    <div class="bar-container">
-      <div class="bar-2"></div>
+    <div class="side">
+      <div>4 star</div>
     </div>
-  </div>
-  <div class="side right">
-    <div>6</div>
-  </div>
-  <div class="side">
-    <div>1 star</div>
-  </div>
-  <div class="middle">
-    <div class="bar-container">
-      <div class="bar-1"></div>
+    <div class="middle">
+      <div class="bar-container">
+        <div class="bar-4"></div>
+      </div>
     </div>
-  </div>
-  <div class="side right">
-    <div>20</div>
-  </div>
-<!---->
-        <div class="col-12 py-2">
-
-
-            <textarea name="" id="contenido" cols="80" rows="3"></textarea><br>
-
-            <div class="rate">
-                <input type="radio" id="star5" name="rate" value="5" />
-                <label for="star5" title="text">5 stars</label>
-                <input type="radio" id="star4" name="rate" value="4" />
-                <label for="star4" title="text">4 stars</label>
-                <input type="radio" id="star3" name="rate" value="3" />
-                <label for="star3" title="text">3 stars</label>
-                <input type="radio" id="star2" name="rate" value="2" />
-                <label for="star2" title="text">2 stars</label>
-                <input type="radio" id="star1" name="rate" value="1" />
-                <label for="star1" title="text">1 star</label>
-            </div>
-            <br>
-            <button class="btn btn-outline-success" (click)="subirComentario(null)">Enviar</button>
+    <div class="side right">
+      <div>63</div>
+    </div>
+    <div class="side">
+      <div>3 star</div>
+    </div>
+    <div class="middle">
+      <div class="bar-container">
+        <div class="bar-3"></div>
+      </div>
+    </div>
+    <div class="side right">
+      <div>15</div>
+    </div>
+    <div class="side">
+      <div>2 star</div>
+    </div>
+    <div class="middle">
+      <div class="bar-container">
+        <div class="bar-2"></div>
+      </div>
+    </div>
+    <div class="side right">
+      <div>6</div>
+    </div>
+    <div class="side">
+      <div>1 star</div>
+    </div>
+    <div class="middle">
+      <div class="bar-container">
+        <div class="bar-1"></div>
+      </div>
+    </div>
+    <div class="side right">
+      <div>20</div>
+    </div>
+    <div class="col-12 py-2">
+      <h1>Comentarios</h1>
+      <textarea name="" id="contenido" cols="80" rows="3" role="textbox" aria-multiline="true"></textarea><br>
+      <div class="rate">
+        <input type="radio" id="star5" name="rate" value="5" />
+        <label for="star5" title="text">5 stars</label>
+        <input type="radio" id="star4" name="rate" value="4" />
+        <label for="star4" title="text">4 stars</label>
+        <input type="radio" id="star3" name="rate" value="3" />
+        <label for="star3" title="text">3 stars</label>
+        <input type="radio" id="star2" name="rate" value="2" />
+        <label for="star2" title="text">2 stars</label>
+        <input type="radio" id="star1" name="rate" value="1" />
+        <label for="star1" title="text">1 star</label>
+      </div>
+      <br>
+      <button class="btn btn-outline-success" (click)="subirComentario(null)">Enviar</button>
+    </div>
+    <div id="scrolllogs" class="col-12 py-2" style="overflow-y: auto; height: 650px;">
+      <ul id="lista" class="col-12 my-2 py-2 bg-dark text-white" *ngFor="let coment of comentarios">
+        <div class="img-content">
+        <img class="img-fluid" src="../../../assets/images/persona.png" alt="icon">
+      </div>
+        <p>{{coment.contenido}}</p>
+        <p>{{coment.puntuacion}}<i class="fas fa-star colorestrella "></i></p>
+        <div *ngFor="let com of comentarios">
+          <li *ngIf="com.idComentario == coment.pregunta" class="col-12 my-2 py-2 pregunta " style="list-style:none">
+            <p>{{com.contenido}}</p>
+            <p>{{com.puntuacion}}<i class="fas fa-star colorestrella "></i></p>
+          </li>
         </div>
-        <div id="scrolllogs" class="col-12 py-2" style="overflow-y: auto; height: 650px;">
-            <ul id="lista" class="col-12 my-2 py-2 bg-dark text-white" *ngFor="let coment of comentarios">
-
-                <p>{{coment.contenido}}</p>
-                <p>{{coment.puntuacion}}<i class="fas fa-star colorestrella "></i></p>
-            
-                <div *ngFor="let com of comentarios">
-                    <li *ngIf="com.idComentario == coment.pregunta" class="col-12 my-2 py-2 pregunta "  style="list-style:none">
-                  
-                        <p>{{com.contenido}}</p>
-                        <p>{{com.puntuacion}}<i class="fas fa-star colorestrella "></i></p>
-                   
-                    </li>
-                </div>
-
-                <button class="btn btn-outline-warning" (click)="responderComentario(coment)"><i class="fas fa-angle-double-right"></i></button>
-                <button *ngIf="rol == 'admin'" class="btn btn-outline-danger" (click)="eliminarComentario(coment)"><i class="fas fa-times"></i></button>
-               
-
-            </ul>
-        </div>
-
+        <button class="btn btn-outline-warning" (click)="responderComentario(coment)"><i
+            class="fas fa-angle-double-right"></i></button>
+        <button *ngIf="rol == 'admin'" class="btn btn-outline-danger" (click)="eliminarComentario(coment)"><i
+            class="fas fa-times"></i></button>
+      </ul>
     </div>
+  </div>
 </div>

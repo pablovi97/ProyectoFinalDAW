@@ -10,10 +10,8 @@ import { ApiService } from 'src/app/shared/service/api.service';
 export class CocheActualizarComponent implements OnInit {
 @Input() cocheEdit: Coche;
   constructor(private _apiService: ApiService,) { }
-
   ngOnInit(): void {
   }
-
 //Recogemos el objeto modificado y lo subimos para actualizarlo
   subirActualizacion():void{
     this._apiService.actualizarCoche(this.cocheEdit)

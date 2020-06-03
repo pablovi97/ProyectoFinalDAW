@@ -17,8 +17,7 @@ export class CochesListaComponent implements OnInit {
   selectedCoche: Coche | null = null;
   editCoche: Coche | null = null;
   busqueda: string | null;
-  constructor(private _apiService: ApiService, private _router: Router) {
-  }
+  constructor(private _apiService: ApiService, private _router: Router) {}
   logged: string;
   usuario: Usuario | null;
   rol: string | null;
@@ -60,15 +59,14 @@ export class CochesListaComponent implements OnInit {
   newForm: FormGroup = this.newFormGroup();
 
   ngOnInit() {
-
     this.parametroBusqueda();
     this.getCoches();
-
     if (localStorage.getItem('logout')) {
       localStorage.removeItem('logout');
       location.reload();
     }
   }
+//Recogemos el parametro de busqueda
   parametroBusqueda() {
     console.log('entra');
     this.busqueda = localStorage.getItem('valorBusqueda');
@@ -76,6 +74,7 @@ export class CochesListaComponent implements OnInit {
     localStorage.removeItem('valorBusqueda');
 
   }
+//Cramos el from group
   newFormGroup() {
     return new FormGroup({
       carroceria: new FormControl('0', Validators.required),
@@ -91,35 +90,30 @@ export class CochesListaComponent implements OnInit {
     });
   }
 
-
   //Funcion para borra un coche de la base de datos
   onDelete(coche: Coche) {
     const scope = this;
     scope._apiService.deleteCoche(coche.idCoche).subscribe();
     location.reload();
   }
+
   //Obtienes todos los coches , si la busqueda no es null quiere decir que has escrito algo en 'Search'
   //y se hará una consulta con lo que se ha escrito
   getCoches(): void {
     console.log('Entra en el metodo!')
     const scope = this;
-
     if (this.busqueda == null) {
       scope.subscription = scope._apiService.getCochesObserv().subscribe(
-
         {
           next(cochesObserv) { scope.coches = cochesObserv; }
         }
       )
     } else {
       scope.subscription = scope._apiService.getCochesObservByMarca(this.busqueda).subscribe(
-
         {
           next(cochesObserv) { console.log("entra en busqueda"), scope.coches = cochesObserv; }
         })
     }
-
-
     this.getlogeado();
   }
 
@@ -129,14 +123,13 @@ export class CochesListaComponent implements OnInit {
       this.usuario = JSON.parse(sessionStorage.getItem('usuario'));
       this.rol = this.usuario.rol;
     }
-
   }
+//Seleccionamos un coche , lo metemos en el local storage y vamos a la pagina de detalles
   onSelect(coch: Coche) {
     this.selectedCoche = coch;
     let cocheJSON = JSON.stringify(coch);
     localStorage.setItem('coche', cocheJSON);
     this._router.navigate(['detalles']);
-
   }
 
   //Creamos un nuevo coche
@@ -153,26 +146,17 @@ export class CochesListaComponent implements OnInit {
       var plazas: number = +this.newForm.get('plazas').value;
       var modelo = this.newForm.get('modelo').value;;
       var imagen = (<HTMLInputElement>document.getElementById('imagen')).value;
-
-
       this._apiService.introducirCoche(tipoCarroceria, marca, stockModelo, km, motor, anio
         , precio, cv, plazas, modelo, imagen).subscribe();
-
     } catch (error) {
       console.log(error)
     }
-
-
-
   }
-
+//Seleccionamos un coche para editarlo
   onEdit(coche: Coche): void {
     this.selectedCoche = coche;
     this.editCoche = coche;
   }
-
-
-
 }
 interface Usuario {
   idUsuario: number,

@@ -1,43 +1,31 @@
 <ng-container *ngIf="pedido != null ; then existe ;else noexiste">
 </ng-container>
-
 <ng-template #existe>
     <div class="container py-2">
-
         <div class="row ">
             <div class="col-6">
                 <h1>Tu carrito </h1>
             </div>
             <div class="col-6"><button class="btn btn-warning" (click)="subirPedido()">Pagar <i
                         class="fas fa-credit-card"> </i></button></div>
-
-
-            <div *ngFor="let det of pedido.detallesPedidos;" class="card bg-dark text-white col-4 py-2 mx-2 mt-2 ">
+            <div *ngFor="let det of pedido.detallesPedidos;" class=" card bg-dark text-white col-12 col-md-4 py-2 mx-2 mt-2 ">
                 <h2 class="text-uppercase text-center ">{{det.nombreVehiculo}}</h2>
-
-                <img mat-card-image src="assets/images/{{det.nombreVehiculo}}.jpg" alt="Photo of {{det.nombreVehiculo}}"
-                    style="width:40%;">
-                <div class="cont py-2 text-center" >
+                <img mat-card-image src="assets/images/{{det.nombreVehiculo}}.jpg" title="Photo of {{det.nombreVehiculo}}" alt="Photo of {{det.nombreVehiculo}}"
+                    style="width:100%;">
+                <div class="cont py-2 text-center">
                     <p>{{det.cantidad}} coche/s</p>
                     <p>TOTAL : <strong class="text-success">{{det.precioTotal}}€</strong> </p>
                     <label for="" id="error" class="bg-danger "></label>
                     <label for="" id="exito" class="bg-success "></label>
-                    <div class="d-flex flex-row justify-content-center alig-items-center">
-                    <p>Desde : <input type="date" name="" id="desde" value="{{det.fechaIniRent}}"></p>
-                    <p>Hasta : <input type="date" name="" id="hasta" value="{{det. fechaFinRent}}"></p>
+                    <div class="d-flex flex-row justify-content-center alig-items-center row">
+                        <p>Desde : <input type="date" name="" id="desde" value="{{det.fechaIniRent}}"></p>
+                        <p>Hasta : <input type="date" name="" id="hasta" value="{{det. fechaFinRent}}"></p>
+                    </div>
                 </div>
-                  <!-- <button class="btn btn-outline-warning" (click)="modificarfechas(det)">Modificar fechas</button>-->
-                </div>
-              
                 <button class="btn btn-danger btn-sm" (click)="eliminarDetalle(det)">Eliminar de la cesta</button>
             </div>
-
-
-
-
         </div>
     </div>
-
 </ng-template>
 
 <ng-template #noexiste>

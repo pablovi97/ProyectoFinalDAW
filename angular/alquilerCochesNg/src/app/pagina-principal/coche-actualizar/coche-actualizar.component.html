@@ -1,53 +1,33 @@
-
 <h2>Editando {{cocheEdit.marca}}</h2>
-
-<!--
-
-<label>Nombre:
-    <input id="name" name="name" class="form-control"
-    required minlength="3" #name="ngModel"
-    [(ngModel)]="cocheEdit.name" type="text" placeholder="Nombre">
-</label><br />
-
-<div *ngIf="name.invalid && (name.dirty || name.touched)">
-
-    <div class="error" *ngIf="name.errors.required">
-        El nombre es obligatorio
-    </div>
-    <div class="error" *ngIf="name.errors.minlength">
-        El nombre debe tener al menos 3 caracteres
-    </div>
-</div>-->
 <div class="actualizar">
+    <label>STOCK :
+        <input [(ngModel)]="cocheEdit.stockModelo" aria-label="stock del vehiculo" type="text"
+            placeholder="stockModelo">
+    </label>
+    <label>Modelo :
+        <input [(ngModel)]="cocheEdit.modelo" aria-label="modelo del vehiculo" type="text" placeholder="Modelo">
+    </label>
+    <label>Marca :
+        <input [(ngModel)]="cocheEdit.marca" aria-label="marca del vehiculo" type="text" placeholder="Marca">
+    </label>
 
+    <label>KM:
+        <input [(ngModel)]="cocheEdit.km" type="text" aria-label="Kilometros del vehiculo" placeholder="km">
+    </label>
+    <label>CV:
+        <input [(ngModel)]="cocheEdit.CV" type="text" aria-label="CV del vehiculo" placeholder="CV">
+    </label>
+    <label>Precio:
+        <input [(ngModel)]="cocheEdit.precio" type="text" aria-label="Precio del vehiculo" placeholder="precio">
+    </label>
 
-<label>STOCK :
-    <input [(ngModel)]="cocheEdit.stockModelo" aria-label="stock del vehiculo" type="text" placeholder="stockModelo">
-</label>
-    
-<label>Modelo :
-    <input [(ngModel)]="cocheEdit.modelo" aria-label="modelo del vehiculo" type="text" placeholder="Modelo">
-</label>
-<label>Marca :
-    <input [(ngModel)]="cocheEdit.marca" aria-label="marca del vehiculo" type="text" placeholder="Marca">
-</label>
-    
-<label>KM:
-    <input [(ngModel)]="cocheEdit.km" type="text" aria-label="Kilometros del vehiculo"  placeholder="km">
-</label>
-<label>CV:
-    <input [(ngModel)]="cocheEdit.CV" type="text" aria-label="CV del vehiculo"  placeholder="CV">
-</label>
-<label>Precio: 
-    <input [(ngModel)]="cocheEdit.precio" type="text" aria-label="Precio del vehiculo" placeholder="precio">
-</label>
-    
-<label>MOTOR:
-    <input [(ngModel)]="cocheEdit.motor" type="text" aria-label="Motor del vehiculo"  placeholder="motor">
-</label>
-<label>AÑO:
-    <input [(ngModel)]="cocheEdit.anio" type="text" aria-label="Año del vehiculo"  placeholder="anio">
-</label>
+    <label>MOTOR:
+        <input [(ngModel)]="cocheEdit.motor" type="text" aria-label="Motor del vehiculo" placeholder="motor">
+    </label>
+    <label>AÑO:
+        <input [(ngModel)]="cocheEdit.anio" type="text" aria-label="Año del vehiculo" placeholder="anio">
+    </label>
     <br>
-<button (click)="subirActualizacion()" class="btn btn-outline-success" aria-label="subir actualización">Update</button>
+    <button (click)="subirActualizacion()" class="btn btn-outline-success"
+        aria-label="subir actualización">Update</button>
 </div>

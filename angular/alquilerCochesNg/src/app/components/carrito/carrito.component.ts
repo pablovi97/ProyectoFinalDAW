@@ -18,6 +18,7 @@ export class CarritoComponent implements OnInit {
   ngOnInit(): void {
     this.recogerPedido();
   }
+  
   recogerPedido() {
     //recogemos los pedidos del session storage 
     if (sessionStorage.getItem('pedido')) {
@@ -25,7 +26,6 @@ export class CarritoComponent implements OnInit {
       console.log(this.pedido);
     }
   }
-
 
   eliminarDetalle(det: Detallepedido) {
     //Quitamos el detallePedidos que selecionamos del array de pedidos guardado en sesion
@@ -40,12 +40,10 @@ export class CarritoComponent implements OnInit {
       sessionStorage.setItem('pedido', pedidoJSON);
     }
     location.reload();
-
-
   }
+
   subirPedido() {
     if (sessionStorage.getItem('usuario')) {
-
       this.usuario = JSON.parse(sessionStorage.getItem('usuario'));
       this._apiService.subirPedido(this.usuario.id).subscribe(data => {
         this.pedido = data.data;
@@ -55,11 +53,11 @@ export class CarritoComponent implements OnInit {
         this._router.navigate(['lista']);
       },
         error => console.log(error));
-
     } else {
       this._router.navigate(['login']);
     }
   }
+
 //Subimos el array de detalles pedidos
   subirDetallesPedido() {
     //aqui usamos el pedido de la sesión porque contiene el array de detalle
@@ -74,9 +72,8 @@ export class CarritoComponent implements OnInit {
         .subscribe(error => console.log(error));
       this.actualizarStock(det);
     }
-
-
   }
+
  /*
   modificarfechas(detalle :Detallepedido){
     let index = this.pedido.detallesPedidos.indexOf(detalle);
@@ -100,12 +97,11 @@ export class CarritoComponent implements OnInit {
     (<HTMLInputElement>document.getElementById('error')).innerText = "";
   }
   }*/
+
   //ACTUALIZAR STOCK
   actualizarStock(det: Detallepedido) {
-
     det.cocheped.stockModelo = det.cocheped.stockModelo - det.cantidad;
     this._apiService.actualizarCoche(det.cocheped).subscribe();
-
   }
 }
 

@@ -1,36 +1,23 @@
 <ng-container *ngIf="coche != null ; then existe ;else noexiste">
 </ng-container>
-
-
 <ng-template #existe>
-
   <mat-card class="card bg-dark">
     <div class="container">
-
       <div class="row">
-
         <div class="col-12">
-          <mat-card-title><span class="display-3 text-uppercase text-white"><strong>{{coche.marca}}</strong></span>
+          <mat-card-title><span class="display-3 text-uppercase text-white text-truncate"><strong>{{coche.marca}}</strong></span>
           </mat-card-title>
         </div>
-        <div class="col-6 py-3"> <img mat-card-image src="assets/images/{{coche.marca}}.jpg"
-            alt="Photo of {{coche.marca}}" style="width:100%;">
-
-
+        <div class="col-12 col-lg-6 py-3"> <img mat-card-image src="assets/images/{{coche.marca}}.jpg"
+            alt="Photo of {{coche.marca}}" title="Photo of {{coche.marca}}" style="width:100%;">
           <mat-card-actions style="text-align:center " class="py-4">
             <div class="btn-group" role="group" aria-label="Basic example">
               <button mat-raised-button type="button" class="btn btn-lg  btn-outline-success"
                 (click)="alquilar(coche)">Alquilar</button>
-              <!-- <button mat-raised-button type="button" class="btn  btn-outline-warning"
-                (click)="reservar(coche)">Reservar</button>-->
             </div>
-
-
-
           </mat-card-actions>
         </div>
-
-        <div class="col-6">
+        <div class="col-12 col-lg-6">
           <mat-card-content class="text-white">
             <strong>KM:</strong> <span class="badge badge-warning ">{{coche.km}} mil</span><br>
             <strong>CV:</strong> <span class="badge badge-warning "> {{coche.CV}}</span><br>
@@ -39,11 +26,8 @@
             <strong>año:</strong> <span class="badge badge-warning ">{{coche.anio}}</span><br>
             <strong>plazas:</strong> <span class="badge badge-warning ">{{coche.plazas}}</span><br>
             <strong>carroceria:</strong> <span class="badge badge-warning ">{{coche.tipoCarroceria}}</span><br>
-
-            <h2 class="py-2 text-warning"><span class="badge badge-warning ">{{coche.precio}}€/dia</span></h2>
-
+            <h1 class="py-2 text-warning"><span class="badge badge-warning  ">{{coche.precio}}€/dia</span></h1>
             <label for="tentacles">Seleccione la cantidad :</label>
-
             <input type="number" id="cantidad" value="1" min="1" max="{{coche.stockModelo}}">
             <form>
               <label id="errorfecha" class="bg-danger text-center display2"></label><br>
@@ -55,25 +39,17 @@
               <input type="date" id="fechaMax" name="party" value="2020-01-01" min="2005-01-01" max="2030-01-01"
                 required>
               <span class="validity"></span>
-
-
             </form>
           </mat-card-content>
         </div>
         <ng-container *ngIf="comentario != null ; then existecomentario">
         </ng-container>
         <ng-template #existecomentario>
-
         </ng-template>
       </div>
-
     </div>
   </mat-card>
-
-
-
 </ng-template>
-
 <ng-template #noexiste>
   Por favor, elija un vehiculo de la lista
 </ng-template>

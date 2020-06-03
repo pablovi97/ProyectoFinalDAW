@@ -6,14 +6,11 @@ import { map } from 'rxjs/operators';
 import { Comentario } from '../models/comentario.model';
 import { Pedido } from '../models/pedido.model';
 import { Detallepedido } from '../models/detallepedido.model';
-//import { element } from 'protractor';
 @Injectable({
   providedIn: 'root'
 })
 
-
 export class ApiService {
-
   //CREAMOS NUESTRO HEADER QUE SE ENVIARAN EN TODAS NUESTRAS PETICIONES
   headers: HttpHeaders;
   private _cocheApiUrl = '/api/';
@@ -23,8 +20,8 @@ export class ApiService {
       'Authorization': 'bearer ' + localStorage.getItem('token'),
       'Content-Type': 'application/json'
     });
-
   }
+
   //RECOGEMOS LOS PEDIDOS POR EL ID USUARIO
   getPedidosbyUser(idUser: number) {
     console.log(idUser)
@@ -46,6 +43,7 @@ export class ApiService {
     console.log(PEDIDO);
     return of(PEDIDO);
   }
+
    //Devolvemos todos los coches de la base de datos
   getCochesObserv(): Observable<Coche[]> {
     const CAR: Coche[] = [];
@@ -67,8 +65,6 @@ export class ApiService {
           element.modelo));
       });
     });
-
- 
     return of(CAR);
   }
 
@@ -93,9 +89,9 @@ export class ApiService {
 
       });
     });
-
     return of(Detallepedidos);
   }
+
 //Recogemos los coches por marca
   getCochesObservByMarca(marca: string): Observable<Coche[]> {
     const CAR: Coche[] = [];
@@ -121,6 +117,7 @@ export class ApiService {
     //Devolvemos todos los coches de la base de datos
     return of(CAR);
   }
+
 //Recogemos los comentarios por idCoche
   getComentarioIdCoche(idCoche: number): Observable<Comentario[]> {
     const COMENT: Comentario[] = [];
@@ -144,6 +141,7 @@ export class ApiService {
     console.log(COMENT);
     return of(COMENT);
   }
+
   //Creamos un comentario en la base de datos
   crearComentarios(contenido: string, fkUsuarioCm: number, fkCocheCm: number, puntuacion: number, pregunta: number | null): Observable<any> {
 
@@ -157,17 +155,20 @@ export class ApiService {
         { headers: this.headers }
       ).pipe(map(data => data));
   }
+
 //Borramos un comentario por su id
   deleteComentario(id: number) {
     console.log('entra en borrar')
     const scope = this;
     return scope._http.delete(this._cocheApiUrl + 'comentarios/' + id, { headers: this.headers });
   }
+
 //Recogemos un comentario por su id
   getComentarioId(id: number): Observable<any> {
     const url_api = this._cocheApiUrl + "comentarios/" + id;
     return this._http.get(url_api, { headers: this.headers }).pipe(map(data => data));
   }
+
 //Recogemos un coche por su id
   getCocheId(id: number): Observable<any> {
     var coche :Coche;
@@ -188,7 +189,6 @@ export class ApiService {
       ).pipe(map(data => data));
   }
 
-
 //Borramos un coche de la base de datos por su id
   deleteCoche(id: number): Observable<any> {
     //Borramos el coche con su id
@@ -196,6 +196,7 @@ export class ApiService {
     const scope = this;
     return scope._http.delete(this._cocheApiUrl + 'coches/' + id, { headers: this.headers });
   }
+
 //Creamos un coche en la base de datos
   introducirCoche(tipoCarroceria: string, marca: string, stockModelo: number
     , km: number, motor: string, anio: number
@@ -208,6 +209,7 @@ export class ApiService {
         { headers: this.headers }
       ).pipe(map(data => data));
   }
+
 //Subimos un pedido a la base de datos
   subirPedido(fkUsuario: number): Observable<any> {
     var fechaPed = new Date().toLocaleDateString('es-ES');
@@ -217,8 +219,8 @@ export class ApiService {
       { fkUsuario, fechaPed },
       { headers: this.headers }
     ).pipe(map(data => data));
-
   }
+
 //Subimos el detalle a la base de datos
   subirDetalle(fkPedido: number, fkCoche: number, cantidad: number, precioTotal: number
     , fechaIniRent: string, fechaFinRent: string): Observable<any> {
@@ -229,7 +231,5 @@ export class ApiService {
       { headers: this.headers }
     ).pipe(map(data => data));
   }
-
-
 
 }

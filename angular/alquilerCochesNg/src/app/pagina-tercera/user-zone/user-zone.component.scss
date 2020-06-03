@@ -15,21 +15,30 @@
     overflow-y: scroll;
 }
 
-.details{
+.details {
     height: 400px;
     overflow-y: scroll;
 }
-.texto{
+
+.texto {
     color: white;
     font-size: 20px;
     font-weight: 500;
 }
+
+.badge{
+    font-size: 30px;
+}
+.text-uppercase{
+    font-size: 40px;
+}
+
 .card-content {
-    background-color: darken($color:   rgb(39, 37, 37), $amount: 0);
+    background-color: darken($color: rgba(0,0,0,.87), $amount: 0);
     margin-bottom: 10px;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 6px 6px 20px #666;   
+    box-shadow: 6px 6px 20px #666;
 
     .idpedido {
         color: white;
@@ -37,14 +46,25 @@
         font-weight: 500;
 
     }
-    .fechapedido{
+
+    .fechapedido {
         color: white;
         font-size: 20px;
         font-weight: 500;
         margin-right: 10px;
     }
-    &:hover{
+
+    &:hover {
         background-color: saturate($color: #000000, $amount: 0);
-        box-shadow: 0px 0px 0px #666;   
+        box-shadow: 0px 0px 0px #666;
     }
+}
+
+button {
+    margin-right: 10px;
+    border-radius: 200px;
+}
+
+h1 {
+    text-transform: uppercase;
 }

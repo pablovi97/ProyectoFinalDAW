@@ -1,62 +1,53 @@
 <div class="container">
-    <div class="row">
+    <div class="row" *ngIf="usuario">
         <div class="col-12 title">
-
             Wellcome {{nombreuser}}!
         </div>
-        <div class="col-12" *ngIf="coche">
+        <div class="col-12 order-1 order-lg-1" *ngIf="coche">
             <div class="row">
-                <div class="col-6">
-                    <img class="img-fluid" src="assets/images/{{coche.marca}}.jpg" alt="">
-                </div>
-                <div class="col-6">
-                    <h1>
+                <div class="col-12 col-lg-6  ">
+                    <h1 class=" text-uppercase">
                         {{coche.marca}} {{coche.modelo}}
                     </h1>
-                    <p>Precio: {{coche.precio}}/dia</p>
-                    <p>Año: {{coche.anio}}</p>
-                    <p>KM: {{coche.km}}</p>
-                    <p>CV: {{coche.CV}}</p>
-                    <p>Plazas: {{coche.plazas}}</p>
+                    <img class="img-fluid" src="assets/images/{{coche.marca}}.jpg" title="photo of {{coche.marca}}" alt="{{coche.marca}}" role="img">
                 </div>
-
+                <div class="col-12 col-lg-6 mt-5">
+                 
+                    <p><span class="badge badge-warning ">Precio: {{coche.precio}}€/dia</span></p>
+                    <p><span class="badge badge-warning ">Año: {{coche.anio}}</span></p>
+                    <p> <span class="badge badge-warning ">KM: {{coche.km}}</span></p>
+                    <p> <span class="badge badge-warning ">CV: {{coche.CV}}</span></p>
+                    <p> <span class="badge badge-warning ">Plazas: {{coche.plazas}}</span></p>
+                </div>
             </div>
-
         </div>
-
-        <div class="col-4 mt-5 mr-1 content">
+        <div class="col-12 col-lg-4 order-3 order-lg-2 mt-5 mr-1 content">
             <h1>PEDIDOS</h1>
-            <div (click)="verDetalle(ped)" class="row card-content" *ngFor="let ped of pedidos">
-                <div class=" col-4 idpedido">
-                    {{ped.idPedido}}
-                </div>
+            <div class="row card-content" *ngFor="let ped of pedidos">
                 <div class="col-4 fechapedido">
                     {{ped.fechaPed}}
                 </div>
-                <div class="col-4 text-white ">
-                    <i class="fas fa-car fa-2x"></i>
+                <div class="col-6 text-white ">
+                    <button class="btn btn-sm btn-outline-warning" (click)="verDetalle(ped)"> <i
+                            class="fa fa-arrow-right fa-2x" aria-label="ver pedidos" title="ver pedidos"></i></button>
                 </div>
-
+                <div class=" col-6 idpedido">
+                    <i class="fas fa-car "></i> {{ped.idPedido}}
+                </div>
             </div>
-
         </div>
-        <div class="col-6 details mt-5" *ngIf="detallePedidos">
+        <div class="col-12 col-lg-6 details mt-5 order-2 order-lg-3 " *ngIf="detallePedidos">
             <h1>DETALLES</h1>
-            <div (click)="verCoche(det)" class="row card-content" *ngFor="let det of detallePedidos">
-
+            <div class="row card-content" *ngFor="let det of detallePedidos">
+                <button class="btn btn-sm btn-outline-warning pr-2" (click)="verCoche(det)" aria-label="ver coche"
+                    title="ver coche"> <i class="fas fa-car "></i></button>
                 <div class="texto mr-2">
                     Pedido: {{det.fkPedido}}
                 </div>
                 <div class=" texto mr-2 ">
                     Fecha: {{det.fechaIniRent}}/ {{det.fechaFinRent}}
                 </div>
-                <div class=" texto ">
-                    Coche: {{det.fkCoche}}
-                </div>
-
-
             </div>
         </div>
-
     </div>
 </div>
