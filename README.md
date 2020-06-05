@@ -3,10 +3,15 @@ Se pretende crear una web de alquiler de coches en la cual los usuarios puede al
 
 **Índice**
 1. [Manual de uso](#id1)
-2. [Memoria 15/04](#id2)
-3. [Memoria 04/05](#id3)
-4. [Memoria 29/05](#id4)
-
+2. [Requisitos del sistema](#id5)
+3. [Memoria 15/04](#id2)
+4. [Memoria 04/05](#id3)
+5. [Memoria 29/05](#id4)
+6. [Experiencias aprendidas](#id6)
+7. [Concluciones](#id7)
+8. [Costes Monetarios](#id8)
+9. [Cumplimiento de alcance](#id9)
+10. [Cumplimiento de tiempo](#id10)
 ## Tecnoligas usuadas
 
 * Laravel (PHP) : usado como una api en  la parte de backend 
@@ -35,6 +40,15 @@ Se pretende crear una web de alquiler de coches en la cual los usuarios puede al
 
 >**Por ultimo abrimos el proyecto de angular alquilerCochesNg y ejecutamos el siguiente comando (npm start)**
 ![img](./images/04.PNG)
+
+
+<div id='id5'/>
+
+## Requisitos del sistema
+* NodeJS y NPM
+* Composer con laravel
+* Mysql y Phpmyadmin
+
 
 <div id='id2'/>
 
@@ -202,6 +216,36 @@ Se pretende crear una web de alquiler de coches en la cual los usuarios puede al
 
 
 
+<div id='id6'/>
+
+## Experiencias aprendidas
+
+* He aprendido a relacionar de una manera limipa y correcta el cliente con el servidor .Pudiendo usar el servidor como api Rest para que en futuros proyectos se pueda exportar los datos de la api a cualquier tipo de cliente de manera sencilla y limpia. También he aprendido a usar el freamwork Angular de manera mas eficaz . Y a manejar los tokens entre cliente y servidor.
 
 
+<div id='id7'/>
+
+## Conclusiones
+
+* Las conclusiones sobre este proyecto fueron que realmente no hacia falta usar una api en laravel y un cliente en angular para hacer esta pagina web ,por el otro lado ,
+al usar estas tecnologias he aprendido a relacionar correctamente cliente y servidores como en las aplicaciones modernas. Y para futuras aplicaciones saber como consumir las apis en distintos frameworks de cliente ya que en framework de angular es muy parecido a otros.
+
+<div id='id8'/>
+
+## Costes monetarios
+
+* Por lo general se usaron tecnologias totalmente gratuitas.
+
+
+<div id='id9'/>
+
+## Cumplimientos de alcances
+
+* Se cumplieron todos los objetivos salvo : subir imagenes al servidor y crear un buen filtro para filtrar coches por todos sus atributos.
+
+<div id='id10'/>
+
+## Cumplimientos de tiempo
+
+* Por lo general se cumplieron todos los plazos.
 
