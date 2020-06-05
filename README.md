@@ -8,10 +8,11 @@ Se pretende crear una web de alquiler de coches en la cual los usuarios puede al
 4. [Memoria 04/05](#id3)
 5. [Memoria 29/05](#id4)
 6. [Experiencias aprendidas](#id6)
-7. [Concluciones](#id7)
+7. [Conclusiones](#id7)
 8. [Costes Monetarios](#id8)
 9. [Cumplimiento de alcance](#id9)
 10. [Cumplimiento de tiempo](#id10)
+11. [Descripción del producto final](#id11)
 ## Tecnoligas usuadas
 
 * Laravel (PHP) : usado como una api en  la parte de backend 
@@ -234,14 +235,14 @@ al usar estas tecnologias he aprendido a relacionar correctamente cliente y serv
 
 ## Costes monetarios
 
-* Por lo general se usaron tecnologias totalmente gratuitas.
+* Por lo general se usaron tecnologias totalmente gratuitas. El unico coste seria si habria que pasar la app a un servidor publico.
 
 
 <div id='id9'/>
 
 ## Cumplimientos de alcances
 
-* Se cumplieron todos los objetivos salvo : subir imagenes al servidor y crear un buen filtro para filtrar coches por todos sus atributos.
+* Se cumplieron todos los objetivos salvo : subir imagenes al servidor y crear un buen filtro para filtrar coches por todos sus atributos. El uso de la API me dificulataba hacer estas dos ultimas tareas .
 
 <div id='id10'/>
 
@@ -249,3 +250,7 @@ al usar estas tecnologias he aprendido a relacionar correctamente cliente y serv
 
 * Por lo general se cumplieron todos los plazos.
 
+## Descripción del producto final
+
+* El producto es una pagina de alquiler de coches en la que los usuarios pueden alquilar coches por un determinado tiempo y podrán comentar sobre los coches de la pagina.
+ Tambiñen los usuarios de tipo ADMIN podrán introducir nuevos coches , actualizarlos y borrarlos y por ultimo también podrán borrar los comentarios.
