@@ -22,6 +22,8 @@ Se pretende crear una web de alquiler de coches en la cual los usuarios puede al
 
 >**Arrancamos los servicios Apache y Mysql en xampp y en Mysql clickamos en 'Admin'**
 ![img](./images/01.PNG)
+    >Para abrir xampp en la maquina entregada ejecutar el siguiente script y ejecutar los siguientes comandos:
+![img](./images/script.PNG)
 
 >**Luego cogemos el Script alquiler_coches.sql y lo importamos**
 ![img](./images/02.PNG)
